@@ -1,0 +1,12 @@
+
+.container{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    background-color: grey;
+    width: 100%;
+    height:10vh;
+}
+.navContent{
+    margin-left: 5rem;
+}
