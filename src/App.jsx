@@ -1,9 +1,10 @@
+import NavBar from "./navBar/NavBar"
 
 function App() {
   return (
-    <>
-      <h1>Explaining gituhub</h1>
-    </>
+  <div>
+    <NavBar/>
+  </div>
   )
 }
 
