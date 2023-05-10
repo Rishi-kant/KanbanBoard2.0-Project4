@@ -2,7 +2,7 @@
 function App() {
   return (
     <>
-      <h1>Proje t4</h1>
+      <h1>Explaining gituhub</h1>
     </>
   )
 }
