@@ -1,6 +1,3 @@
-
-
-
 Kanban Group React JS Project:-
 This is a collaborative Kanban board project developed by Shivani, Rishi, Neeru, and Maneesha. The purpose of this project is to create a digital Kanban board using React JS and implement drag-and-drop functionality for managing tasks and workflows.
 
@@ -10,10 +7,8 @@ Features
 Getting Started
 Contributors
 
-
 Introduction:-
 A Kanban board is an effective tool for visualizing workflows and managing tasks or projects. This project aims to provide a digital Kanban board with intuitive drag-and-drop functionality, enabling users to easily move tasks between different stages of their workflow.
-
 
 Features:-
 Interactive and user-friendly interface.
@@ -63,7 +58,6 @@ activity:[` Created at ${time} `]
 }
 ]
 }
-
 
 Contributors:-
 Shivani Shukla,
