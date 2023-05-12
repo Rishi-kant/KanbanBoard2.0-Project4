@@ -8,11 +8,13 @@
     align-items: center;
     padding-left: 15px;
     border-radius: 10px;
-    background-color: #CAD5E2;
+    /* background-color: #CAD5E2; */
+    background-color: #758283;
    /* background-color: transparent; */
    /* backdrop-filter: blur(10px); */
 }
 .btnContainer:hover{
     cursor: pointer;
-    background-color:#758283;
+    /* background-color:#758283; */
+    background-color:#242B2E ;
 }
