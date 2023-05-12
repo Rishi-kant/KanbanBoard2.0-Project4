@@ -1,0 +1,14 @@
+.card_title{
+    
+    width:15vw;
+    height:1rem;
+    padding:17px;
+    border-radius: 0.5rem;
+    background-color: black;
+    color:white;
+
+}
+.content{
+    display: flex;
+    gap:8rem;
+}
