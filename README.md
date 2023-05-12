@@ -21,6 +21,7 @@ Responsive design for optimal viewing on different devices.
 
 Getting Started:-
 We are using React in this project.
+
 => first of all we installed the basic structure by using npm create vite because we are using VITE here in this project.
 => Then we created a component folder, in which we will maintain all the reusable part of the UI. A navBar folder in which we maintin navbar of this project.
 => In this project we are going to use Recoil library for the state management.
@@ -30,34 +31,25 @@ We are using React in this project.
 
 Data Structure which we are following in our pproject :-
 
-const board = {
-columns: [
-{
-id: 1,
-title:dummy,
-cards: [
-{
-id: 1,
-title: '',
-description: '',
-},
-]
-},
 
-{
-id: 2,
-title: dummy,
-cards: [
-{
-id: 2,
-title: '',
-description: '',
-activity:[` Created at ${time} `]
-},
+Board=[
+    {
+        title:"column title"
+        Cards:[
+            {
+                task:"task name",
+                description:"description about the task",
+                time:new Date(),
+                activety:[
+                    createdAt:"",
+                    Moved:""
+                ]
+            }
+        ]
+    }
 ]
-}
-]
-}
+
+
 
 Contributors:-
 Shivani Shukla,
