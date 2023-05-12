@@ -1,11 +1,11 @@
-import Home from "./home/Home"
+import Board from "./board/Board"
 import NavBar from "./navBar/NavBar"
  import style from "./App.module.css"
 function App() {
   return (
   <div  className={style.container}>
     <NavBar/>
-    <Home/>
+    <Board/>
   </div>
   )
 }

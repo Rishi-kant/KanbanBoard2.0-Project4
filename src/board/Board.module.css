@@ -1,0 +1,10 @@
+
+.container{
+   
+    width: 95vw;
+    margin: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+   /* overflow-x: scroll; */
+}
