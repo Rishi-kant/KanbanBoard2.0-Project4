@@ -4,7 +4,7 @@
     align-items: center;
     border-bottom: 1px solid;
     /* justify-content: center; */
-    /* background-color: transparent; */
+    background-color: rgba(0,0,0,.4);
     width: 100%;
     height:10vh;
     -webkit-backdrop-filter: blur(8px);

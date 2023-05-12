@@ -2,10 +2,12 @@
 import React from 'react'
 import style from "./AddBtn.module.css"
 import { AiOutlinePlus } from 'react-icons/ai';
-function AddBtn({}) {
+function AddBtn({name,onClick}) {
   return (
-    <div className={style.btnContainer}>
-       <AiOutlinePlus/>Add another list
+    <div className={style.btnContainer}
+     onClick={onClick}
+    >
+       <AiOutlinePlus/>{name}
     </div>
   )
 }
