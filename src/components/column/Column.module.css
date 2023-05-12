@@ -1,0 +1,28 @@
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    min-height: 10vh;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+
+.topVeiw{
+    display: flex;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+.contentEditable{
+   cursor: pointer; 
+   min-width: 4rem;
+}
