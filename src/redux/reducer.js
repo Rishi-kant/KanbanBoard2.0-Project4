@@ -1,13 +1,14 @@
 
 import {createSlice} from "@reduxjs/toolkit"
 
-const initialState=[]
+// const initialState=[]
 const boardSlice=createSlice({
     name:"board",
-    initialState,
+    initialState:[],
     reducers: {
         addColumn(state,action){
-            state.unshift(action.payload)
+            const{title}=action.payload
+            state.push({title})
         }
     }
 })
