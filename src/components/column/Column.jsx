@@ -3,6 +3,7 @@ import style from "./Column.module.css";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import AddBtn from "../addButton/AddBtn";
+import Card from "../cards/CardEditable"
 function Column() {
   const [showform, setShowForm] = useState(false);
   const [cardName, setcardName] = useState("");
@@ -51,8 +52,8 @@ function Column() {
             />
           </div>
           <div className={style.addcardContainer}>
-            <div className={style.addCont2}>
-              <button type="submit" className={style.addBtn}>
+         <div className={style.addCont2}>
+             <button type="submit" className={style.addBtn}>
                 Add card
               </button>
               <RxCross2 onClick={handleClose} className={style.cross} />
