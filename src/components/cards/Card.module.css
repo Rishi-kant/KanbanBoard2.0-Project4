@@ -1,0 +1,22 @@
+.card_title{
+    
+    width:17vw;
+    height:1rem;
+    padding:17px;
+    border-radius: 0.5rem;
+    background-color: black;
+    color:white;
+
+}
+.card_title:hover{
+    opacity: 2;
+}
+.content{
+    display: flex;
+    gap:8rem;
+}
+.icon{
+    display:flex;
+    gap:1rem;
+    margin-right:0rem;
+}
