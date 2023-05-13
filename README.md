@@ -34,15 +34,15 @@ Data Structure which we are following in our pproject :-
 
 Board=[
     {
-        title:"column title"
+        title:"column title",
+        id:uuid(),
         Cards:[
             {
-                task:"task name",
-                description:"description about the task",
-                time:new Date(),
+                task:"",
+                description:"",
+                time:,
                 activety:[
-                    createdAt:"",
-                    Moved:""
+
                 ]
             }
         ]

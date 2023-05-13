@@ -1,22 +1,22 @@
 .card_title{
-    
-    width:17vw;
-    height:1rem;
-    padding:17px;
-    border-radius: 0.5rem;
-    background-color: black;
+    display: flex;
+    width:288px;
+    height:40px;
+    border-radius: 10px;
+   padding-left: 8px;
+   padding-right: 8px;
+   background-color: #758283;
     color:white;
-
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
 }
 .card_title:hover{
-    opacity: 2;
+    background-color:#242B2E ;
 }
-.content{
-    display: flex;
-    gap:8rem;
-}
+
 .icon{
     display:flex;
-    gap:1rem;
+    gap:10px;
     margin-right:0rem;
 }
