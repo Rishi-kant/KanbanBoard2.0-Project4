@@ -5,9 +5,12 @@ function NavBar() {
   return (
     <div className={style.container}>
       <div className={style.innerContainer}>
-      <div className={style.navContent}
+      {/* <div className={style.navContent}
       contentEditable={true}
       > 
+      </div> */}
+      <div>
+        <h1>KanBan</h1>
       </div>
       <div>
         <FiMoreHorizontal  className="more"/>

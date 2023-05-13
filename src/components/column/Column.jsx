@@ -3,7 +3,7 @@ import style from "./Column.module.css";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import AddBtn from "../addButton/AddBtn";
-function Column() {
+function Column({title}) {
   const [showform, setShowForm] = useState(false);
   const [cardName, setcardName] = useState("");
   const [todo, setTodo] = useState([]);
@@ -25,7 +25,16 @@ function Column() {
   return (
     <div className={style.container}>
       <div className={style.topVeiw}>
-        <div contentEditable={true} className={style.contentEditable}></div>
+        <div>
+          <h4>{title}</h4>
+        </div>
+        {/* <div 
+        
+        contentEditable={true} className={style.contentEditable}
+        // value={title}
+        >
+        
+        </div> */}
         <div>
           <FiMoreHorizontal className="more" />
         </div>

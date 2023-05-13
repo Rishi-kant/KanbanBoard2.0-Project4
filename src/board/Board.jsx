@@ -4,10 +4,17 @@ import style from "./Board.module.css";
 import { RxCross2 } from 'react-icons/rx';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import React, { useState } from "react";
+import{useDispatch,useSelector}from "react-redux"
+import { addColumn } from "../redux/reducer";
+
 
 function Board() {
+  const[colName,setColName]=useState("")
   const [showform, setShowForm] = useState(false);
-
+  const dispatch=useDispatch()
+  const board=useSelector((state)=>state.board)
+  console.log(board[0])
+  
   const handleShow=()=>{
     setShowForm(true)
   }
@@ -17,11 +24,24 @@ function Board() {
 
   const handleSubmit=(e)=>{
     e.preventDefault()
+    dispatch(addColumn({title:`${colName}`}))
+    setColName("")
   }
+  
   return (
     <div className={style.container}>
-      <Column />
+      {/* <Column /> */}
       
+       {
+        board.map((column,columnInd)=>(
+          <div key={columnInd}>
+            {/* <h2>{column.title}</h2> */}
+            <Column  title={column.title}/> 
+            
+          </div>
+        ))
+       }
+
       {!showform ? (
         <AddBtn onClick={handleShow}  name={"Add a list"}/>
       ) : (
@@ -30,8 +50,8 @@ function Board() {
         onSubmit={handleSubmit}>
           <div>
             <input
-              // value={cardName}
-              onChange={(e) => setcardName(e.target.value)}
+              value={colName}
+              onChange={(e) => setColName(e.target.value)}
               className={style.inp}
               placeholder="Enter list title ..."
             />
