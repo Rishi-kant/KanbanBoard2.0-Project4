@@ -13,8 +13,7 @@ function Board() {
   const [showform, setShowForm] = useState(false);
   const dispatch=useDispatch()
   const board=useSelector((state)=>state.board)
-  console.log(board[0])
-  
+ 
   const handleShow=()=>{
     setShowForm(true)
   }
@@ -36,7 +35,7 @@ function Board() {
         board.map((column,columnInd)=>(
           <div key={columnInd}>
             {/* <h2>{column.title}</h2> */}
-            <Column  title={column.title}/> 
+            <Column  title={column.title } columnInd={columnInd} id={column.id}/> 
             
           </div>
         ))

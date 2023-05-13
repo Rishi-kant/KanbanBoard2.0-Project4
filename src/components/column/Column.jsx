@@ -4,12 +4,20 @@ import { FiMoreHorizontal } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import AddBtn from "../addButton/AddBtn";
 
-function Column({title}) {
+//this is for dispatching data
+import { useDispatch, useSelector } from "react-redux";
+import { addCard } from "../../redux/reducer";
+import Card from "../cards/CardEditable";
 
+function Column({ title, columnInd, id }) {
   const [showform, setShowForm] = useState(false);
   const [cardName, setcardName] = useState("");
-  const [todo, setTodo] = useState([]);
+  // const [todo, setTodo] = useState([]);
 
+  // this is for dispatching data
+
+  const dispatch = useDispatch();
+  const board = useSelector((state) => state.board);
   const handleShow = () => {
     setShowForm(true);
   };
@@ -18,9 +26,13 @@ function Column({title}) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const prevtodo = [...todo];
-    const newTodo = [...prevtodo, cardName];
-    setTodo(newTodo);
+    
+    dispatch(
+      addCard({
+        columnInd,
+        task: `${cardName}`,
+      })
+    );
     setcardName("");
     setShowForm(false);
   };
@@ -30,21 +42,16 @@ function Column({title}) {
         <div>
           <h4>{title}</h4>
         </div>
-        {/* <div 
-        
-        contentEditable={true} className={style.contentEditable}
-        // value={title}
-        >
-        
-        </div> */}
+
         <div>
           <FiMoreHorizontal className="more" />
         </div>
       </div>
-      {todo.map((ele, ind) => {
+
+      {board[columnInd].cards.map((task, taskIndex) => {
         return (
-          <div>
-            <h2>{ele}</h2>
+          <div key={taskIndex}>
+            <h2><Card text={task.task}/></h2>
           </div>
         );
       })}
@@ -62,8 +69,8 @@ function Column({title}) {
             />
           </div>
           <div className={style.addcardContainer}>
-         <div className={style.addCont2}>
-             <button type="submit" className={style.addBtn}>
+            <div className={style.addCont2}>
+              <button type="submit" className={style.addBtn}>
                 Add card
               </button>
               <RxCross2 onClick={handleClose} className={style.cross} />
