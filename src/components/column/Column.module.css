@@ -26,3 +26,32 @@
    cursor: pointer; 
    min-width: 4rem;
 }
+.addcardContainer{
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+.inp{
+    width: 280px;
+    height: 50px;
+    border-radius:10px ;
+    border: none;
+    outline: none;
+}
+.addCont2{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.addBtn{
+    height: 2rem;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #383CC1;
+}
+.cross{
+    cursor: pointer;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { AiOutlineEdit } from "react-icons/ai";
+import {MdDeleteForever} from "react-icons/md"
 import style from "./Card.module.css";
 import {
   Button,
@@ -11,6 +12,7 @@ import {
 import { useState } from "react";
 export default function Card() {
   const [anchorEl, setanchorEl] = useState(null);
+  
   const openPopover = (event) => {
     setanchorEl(event.currentTarget);
   };
@@ -21,10 +23,12 @@ export default function Card() {
     <div className={style.card_title}>
       <div className={style.content}>
         <p>something</p>
+        <div className={style.icon}>
         <span onClick={openPopover}>
           <AiOutlineEdit />
         </span>
-
+        <MdDeleteForever/>
+        </div>
         <Popover
           
           open={Boolean(anchorEl)}
