@@ -20,7 +20,11 @@ const boardSlice = createSlice({
         activity: [`Task created at the time : ${new Date()}`],
       });
     },
+    delCard(state,action){
+      const {columnInd,taskIndex}=action.payload
+      state[columnInd].cards.splice(taskIndex,1)
+    }
   },
 });
-export const { addColumn, addCard } = boardSlice.actions;
+export const { addColumn, addCard,delCard } = boardSlice.actions;
 export default boardSlice.reducer;

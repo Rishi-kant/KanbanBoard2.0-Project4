@@ -1,6 +1,7 @@
-import Board from "./board/Board"
+// import Board from "./board/Board"
 import NavBar from "./navBar/NavBar"
  import style from "./App.module.css"
+import Board from "./board/board"
 
 function App() {
   return (

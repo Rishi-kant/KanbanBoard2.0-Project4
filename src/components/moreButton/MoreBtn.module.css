@@ -1,0 +1,19 @@
+
+
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+.btn:hover{
+    /* background-color: rgba(0,0,0,.4); */
+    background-color:#758283;
+}

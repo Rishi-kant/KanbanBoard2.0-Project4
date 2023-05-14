@@ -8,6 +8,7 @@ import{useDispatch,useSelector}from "react-redux"
 import { addColumn } from "../redux/reducer";
 
 
+
 function Board() {
   const[colName,setColName]=useState("")
   const [showform, setShowForm] = useState(false);

@@ -6,9 +6,11 @@ import AddBtn from "../addButton/AddBtn";
 
 //this is for dispatching data
 import { useDispatch, useSelector } from "react-redux";
-import { addCard } from "../../redux/reducer";
+import { addCard, delCard } from "../../redux/reducer";
 import Card from "../cards/CardEditable";
-import Board from "../../board/Board";
+
+import MoreBtn from "../moreButton/MoreBtn";
+
 
 function Column({ title, columnInd, id }) {
   const [showform, setShowForm] = useState(false);
@@ -38,22 +40,26 @@ function Column({ title, columnInd, id }) {
     setShowForm(false);
    
   };
+  const deleteCard=(columnInd,taskIndex)=>{
+    dispatch(delCard({columnInd,taskIndex}))
+  }
   return (
     <div className={style.container}>
       <div className={style.topVeiw}>
         <div>
-          <h4>{title}</h4>
+          <h3>{title}</h3>
         </div>
 
         <div>
-          <FiMoreHorizontal className="more" />
+          
+          <MoreBtn  />
         </div>
       </div>
 
       {board[columnInd].cards.map((task, taskIndex) => {
         return (
           <div key={taskIndex}>
-            <h2><Card text={task.task}/></h2>
+            <h2><Card text={task.task} onClick={()=>deleteCard(columnInd,taskIndex)}/></h2>
           </div>
         );
       })}
@@ -78,7 +84,7 @@ function Column({ title, columnInd, id }) {
               <RxCross2 onClick={handleClose} className={style.cross} />
             </div>
             <div>
-              <FiMoreHorizontal className="more" />
+            <MoreBtn  />
             </div>
           </div>
         </form>

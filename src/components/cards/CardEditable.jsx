@@ -12,7 +12,8 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-export default function Card({ text }) {
+export default function Card({ text ,onClick}) {
+
   const [anchorEl, setanchorEl] = useState(null);
   const [showModal , setShowModal] = useState(false)
 
@@ -35,33 +36,21 @@ export default function Card({ text }) {
       <div className={style.icon}>
         
         <MdOutlineModeEditOutline onClick={openPopover} />
-        <MdDeleteForever />
+        <MdDeleteForever onClick={onClick}/>
       </div>
       <Popover
         open={Boolean(anchorEl)}
         onClose={closePopover}
         anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "left",
-        }}
+        className={style.pop}
+       
       >
-        <Typography
-          varient="body2"
-          p={2}
-          sx={{
-            width: 250,
-          }}
-        >
-          something
-        </Typography>
-        <Button variant="contained" sx={{ margin: 8 }}>
-          save changes
-        </Button>
+        <div className={style.txt}>
+        <input/>
+        </div> 
+        <div>
+        <button className={style.btn}>Save</button>
+        </div>
       </Popover>
     </div>
     </>
