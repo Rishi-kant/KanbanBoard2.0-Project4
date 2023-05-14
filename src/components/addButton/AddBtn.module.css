@@ -9,9 +9,11 @@
     padding-left: 15px;
     border-radius: 10px;
     /* background-color: #CAD5E2; */
-    background-color: #758283;
+    /* background-color: #758283; */
+    background-color: rgba(0,0,0,.6);
    /* background-color: transparent; */
    /* backdrop-filter: blur(10px); */
+   color: white;
 }
 .btnContainer:hover{
     cursor: pointer;

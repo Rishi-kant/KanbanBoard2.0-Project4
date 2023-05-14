@@ -4,6 +4,8 @@
     flex-direction: column;
     min-height: 100vh;
     min-width: 100vw;
-    background-color: grey;
+    /* background-color: grey; */
+    background-image: url(https://images.pexels.com/photos/2117937/pexels-photo-2117937.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    /* background-image: url(https://images.pexels.com/photos/3377405/pexels-photo-3377405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1); */
     align-items: center;
 }
