@@ -8,6 +8,7 @@ import AddBtn from "../addButton/AddBtn";
 import { useDispatch, useSelector } from "react-redux";
 import { addCard } from "../../redux/reducer";
 import Card from "../cards/CardEditable";
+import Board from "../../board/Board";
 
 function Column({ title, columnInd, id }) {
   const [showform, setShowForm] = useState(false);
@@ -35,6 +36,7 @@ function Column({ title, columnInd, id }) {
     );
     setcardName("");
     setShowForm(false);
+   
   };
   return (
     <div className={style.container}>
