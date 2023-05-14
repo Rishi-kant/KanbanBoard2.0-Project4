@@ -2,6 +2,7 @@ import React from "react";
 import { MdOutlineModeEditOutline} from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
 import style from "./Card.module.css";
+import Cardinfo from "./Cardinfo/Cardinfo";
 import {
   Button,
   Popover,
@@ -10,8 +11,10 @@ import {
   useColorScheme,
 } from "@mui/material";
 import { useState } from "react";
+
 export default function Card({ text }) {
   const [anchorEl, setanchorEl] = useState(null);
+  const [showModal , setShowModal] = useState(false)
 
   const openPopover = (event) => {
     setanchorEl(event.currentTarget);
@@ -20,10 +23,15 @@ export default function Card({ text }) {
     setanchorEl(null);
   };
   return (
-    <div className={style.card_title}>
-      <div>
-        <h5>{text}</h5>
+    <>
+    { showModal && <Cardinfo  onClose={()=>setShowModal(false)}  /> }
+    
+    <div className={style.card_title}  >
+      <div onClick={()=> setShowModal(true)}>
+        <h5  >{text}</h5>
+       
       </div>
+
       <div className={style.icon}>
         
         <MdOutlineModeEditOutline onClick={openPopover} />
@@ -56,5 +64,6 @@ export default function Card({ text }) {
         </Button>
       </Popover>
     </div>
+    </>
   );
 }
