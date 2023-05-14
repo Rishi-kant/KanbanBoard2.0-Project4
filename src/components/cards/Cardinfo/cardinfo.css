@@ -1,0 +1,54 @@
+
+.cardinfo-container{
+    padding: 30px;
+    background-color: #fff;
+    display: flex;  
+    flex-direction: column;
+    gap: 30px;
+     width: 600px;
+     margin-top: -10px;
+
+}
+.cardinfo-box{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 20px;
+    position: relative;
+   
+
+}
+ .icon-title{
+    
+    position: absolute;
+    left: -20px;
+    min-height: 30px;
+  
+    
+ }
+.cardinfo-box_title{
+    font-weight: bold;
+    min-height: 30px;
+    font-size: 1.3rem;
+    padding: 10px;
+}
+.title-input{
+    /* width: fit-content; */
+    
+}
+.description-title{
+    font-size: 16px;
+    line-height: 14px;
+    
+
+}
+.hide-btn{
+    width: 80px;
+    padding: 15px 5px;
+    position: absolute;
+    right: 1px;
+    font-size: 16px;
+    background-color: #EF5354;
+    border-radius: 10px;
+    color: #fff;
+}

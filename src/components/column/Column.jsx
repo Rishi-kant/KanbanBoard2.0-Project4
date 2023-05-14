@@ -8,7 +8,9 @@ import AddBtn from "../addButton/AddBtn";
 import { useDispatch, useSelector } from "react-redux";
 import { addCard, delCard } from "../../redux/reducer";
 import Card from "../cards/CardEditable";
+
 import MoreBtn from "../moreButton/MoreBtn";
+
 
 function Column({ title, columnInd, id }) {
   const [showform, setShowForm] = useState(false);
@@ -36,6 +38,7 @@ function Column({ title, columnInd, id }) {
     );
     setcardName("");
     setShowForm(false);
+   
   };
   const deleteCard=(columnInd,taskIndex)=>{
     dispatch(delCard({columnInd,taskIndex}))
