@@ -9,6 +9,7 @@ import { addColumn } from "../redux/reducer";
 
 
 
+
 function Board() {
   const[colName,setColName]=useState("")
   const [showform, setShowForm] = useState(false);
@@ -31,6 +32,7 @@ function Board() {
   return (
     <div className={style.container}>
       {/* <Column /> */}
+      
       
        {
         board.map((column,columnInd)=>(

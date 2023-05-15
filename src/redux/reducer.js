@@ -23,8 +23,12 @@ const boardSlice = createSlice({
     delCard(state,action){
       const {columnInd,taskIndex}=action.payload
       state[columnInd].cards.splice(taskIndex,1)
+    },
+    delColumn(state,action){
+     const{columnInd}=action.payload
+     state.splice(columnInd,1)
     }
   },
 });
-export const { addColumn, addCard,delCard } = boardSlice.actions;
+export const { addColumn, addCard,delCard,delColumn } = boardSlice.actions;
 export default boardSlice.reducer;
