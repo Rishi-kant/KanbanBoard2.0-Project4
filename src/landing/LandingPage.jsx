@@ -13,7 +13,7 @@ function LandingPage() {
   return (
     <div className={style.container}>
      <div className={style.head}>
-        <h3>Create new board</h3>
+        <h3>Create a board</h3>
      </div>
      <form  
      className={style.form}

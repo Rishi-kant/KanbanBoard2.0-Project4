@@ -1,12 +1,12 @@
 
 import {createSlice} from "@reduxjs/toolkit"
-intitailState={}
+ let initialState={}
 const detailSlice=createSlice({
     name:"detail",
-    intitailState,
+    initialState,
     reducers:{
-        addDetail(state,action){
-
+        addDetail:(state,action)=>{
+        return state
         }
     }
 })
