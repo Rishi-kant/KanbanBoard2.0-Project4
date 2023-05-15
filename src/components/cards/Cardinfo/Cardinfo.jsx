@@ -7,6 +7,7 @@ import {AiOutlineMenuUnfold} from 'react-icons/ai'
 import EditableText from '../../Editabletext/Editabletext'
 import Modal from '../../Modal/Modal'
 import {RxCross2} from 'react-icons/rx'
+import { useParams } from 'react-router';
 
 function Cardinfo(props) {
     
@@ -49,7 +50,7 @@ function Cardinfo(props) {
                 <li>Task was moved from To Do list to In Progress List</li>
             </ul>
         </div>
-
+-
     </div> 
 </Modal>
   )
