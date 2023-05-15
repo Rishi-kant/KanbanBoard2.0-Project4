@@ -5,6 +5,7 @@ import Board from "./board/board"
 import LandingPage from "./landing/LandingPage"
 import {Routes,Route} from "react-router-dom"
 import InfoNav from "./infoNav/InfoNav"
+import Cardinfo from "./components/cards/Cardinfo/Cardinfo"
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
     <InfoNav/>
     <Routes>
       <Route  path="/" element={ <LandingPage/> }/>
-      <Route  path="board" element={ <Board/>}/>
+      <Route  path="/board" element={ <Board/>}/>
+      <Route path="/card" element={<Cardinfo/>}/>
     </Routes>
    
   </div>

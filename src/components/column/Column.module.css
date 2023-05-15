@@ -55,3 +55,29 @@
 .cross{
     cursor: pointer;
 }
+.typo{
+    margin:1 rem;
+    padding: 1rem;
+}
+.close{
+    display: flex;
+    justify-content: space-between;
+}
+.action{
+    margin-top:1rem;
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    background-color: #242B2E ;
+}
+.action :hover{
+    background-color: #758283;
+    height:2rem;
+    border-radius:0.5rem;
+   width:13rem;
+   cursor: pointer;
+}
+.color{
+    background-color:#242B2E;
+    color:white;
+}

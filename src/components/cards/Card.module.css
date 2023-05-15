@@ -20,13 +20,10 @@
     gap:10px;
     margin-right:0rem;
 }
-.pop{
-    display: flex;
-    flex-direction: column;
-    width: 600px;
-    background-color: transparent;
+ .pop{
+  width:auto;
     
-}
+} 
 .btn{
     background-color:#1B98F5 ;
     width: 5rem;
@@ -38,4 +35,13 @@
 .txt{
     width: 200px;
     height: 100px;
+}
+.edit{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.save{
+    background-color: #242B2E;
 }
