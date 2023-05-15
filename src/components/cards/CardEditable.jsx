@@ -21,7 +21,7 @@ import {Popover,Typography,Button,TextField} from "@mui/material"
 // } from "@mui/material";
 import { useState } from "react";
 
-export default function Card({ text ,onClick}) {
+export default function Card({ text ,onClick,columnInd,taskIndex}) {
   // const classes =useStyles()
 
   const [anchorEl, setanchorEl] = useState(null);
@@ -37,9 +37,10 @@ export default function Card({ text ,onClick}) {
    e.preventDefault()
    alert('updated')
   }
+
   return (
     <>
-    { showModal && <Cardinfo  onClose={()=>setShowModal(false)}  /> }
+    { showModal && <Cardinfo  onClose={()=>setShowModal(false)}  columnInd={columnInd} taskIndex={taskIndex} /> }
     
     <div className={style.card_title}  >
       <div onClick={()=> setShowModal(true)}>
