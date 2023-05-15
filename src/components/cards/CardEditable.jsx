@@ -13,7 +13,7 @@ import {
 import { useState } from "react";
 
 export default function Card({ text ,onClick}) {
-
+  const [isHovered, setIsHovered] = useState(false);
   const [anchorEl, setanchorEl] = useState(null);
   const [showModal , setShowModal] = useState(false)
 
@@ -23,21 +23,40 @@ export default function Card({ text ,onClick}) {
   const closePopover = (event) => {
     setanchorEl(null);
   };
+   
+const handleMouseEnter=()=>{
+  setIsHovered(true)
+}
+
+const handleMouseLeave=()=>{
+  setIsHovered(false)
+}
   return (
     <>
     { showModal && <Cardinfo  onClose={()=>setShowModal(false)}  /> }
     
-    <div className={style.card_title}  >
+    <div
+    onMouseEnter={handleMouseEnter}
+    onMouseLeave={handleMouseLeave}
+    className={style.card_title}
+      >
       <div onClick={()=> setShowModal(true)}>
         <h5  >{text}</h5>
        
       </div>
 
-      <div className={style.icon}>
-        
+       {
+        isHovered?(
+          <div className={style.icon}>
         <MdOutlineModeEditOutline onClick={openPopover} />
         <MdDeleteForever onClick={onClick}/>
       </div>
+        )
+        :
+        ""
+       }
+
+     
       <Popover
         open={Boolean(anchorEl)}
         onClose={closePopover}

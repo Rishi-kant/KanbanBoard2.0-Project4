@@ -6,7 +6,7 @@ import AddBtn from "../addButton/AddBtn";
 
 //this is for dispatching data
 import { useDispatch, useSelector } from "react-redux";
-import { addCard, delCard } from "../../redux/reducer";
+import { addCard, delCard, delColumn } from "../../redux/reducer";
 import Card from "../cards/CardEditable";
 
 import MoreBtn from "../moreButton/MoreBtn";
@@ -43,6 +43,10 @@ function Column({ title, columnInd, id }) {
   const deleteCard=(columnInd,taskIndex)=>{
     dispatch(delCard({columnInd,taskIndex}))
   }
+  //this is for deleting column
+  const deleteColumn=(columnInd)=>{
+    dispatch(delColumn({columnInd}))
+  }
   return (
     <div className={style.container}>
       <div className={style.topVeiw}>
@@ -52,7 +56,7 @@ function Column({ title, columnInd, id }) {
 
         <div>
           
-          <MoreBtn  />
+          <MoreBtn  onClick={()=>deleteColumn(columnInd)} />
         </div>
       </div>
 
