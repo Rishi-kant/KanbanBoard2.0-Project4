@@ -8,7 +8,7 @@ import {IoMdClose} from "react-icons/io"
 
 //this is for dispatching data
 import { useDispatch, useSelector } from "react-redux";
-import { addCard, delCard, delColumn } from "../../redux/reducer";
+import { addCard, delCard, delColumn } from "../../redux/board";
 import Card from "../cards/CardEditable";
 
 import MoreBtn from "../moreButton/MoreBtn";

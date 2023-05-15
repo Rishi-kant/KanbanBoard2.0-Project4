@@ -5,7 +5,7 @@ import { RxCross2 } from 'react-icons/rx';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import React, { useState } from "react";
 import{useDispatch,useSelector}from "react-redux"
-import { addColumn } from "../redux/reducer";
+import { addColumn } from "../redux/board";
 
 
 
@@ -15,7 +15,7 @@ function Board() {
   const [showform, setShowForm] = useState(false);
   const dispatch=useDispatch()
   const board=useSelector((state)=>state.board)
- 
+  // const board=useSelector((state)=>state.board)
   const handleShow=()=>{
     setShowForm(true)
   }
