@@ -35,3 +35,11 @@
     font-size: 25px;
     cursor: pointer;
 }
+.contentEditable{
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size:20px ;
+    cursor: text;
+}

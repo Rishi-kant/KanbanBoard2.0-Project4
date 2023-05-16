@@ -11,9 +11,13 @@ const detailSlice=createSlice({
         const{boardName,name}=action.payload
         state.boardName=boardName
         state.name=name
+        },
+        updateBoardName(state,action){
+         const {newName}=action.payload
+         state.boardName=newName
         }
     }
 })
 
-export const {addDetail}=detailSlice.actions
+export const {addDetail,updateBoardName}=detailSlice.actions
 export default detailSlice.reducer
