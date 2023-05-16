@@ -1,6 +1,6 @@
 
 import NavBar from "./navBar/NavBar"
- import style from "./App.module.css"
+import style from "./App.module.css"
 import Board from "./board/board"
 import LandingPage from "./landing/LandingPage"
 import {Routes,Route} from "react-router-dom"
@@ -13,8 +13,10 @@ function App() {
     <NavBar/>
     <Routes>
       <Route  path="/" element={ <LandingPage/> }/>
-      <Route  path="/board" element={ <Board/>}/>
-      <Route path="/card" element={<Cardinfo/>}/>
+      <Route  path="/board" element={ <Board/>}>
+      <Route path="/board/card" element={<Cardinfo/>}/>
+      </Route>
+      
     </Routes>
    
   </div>

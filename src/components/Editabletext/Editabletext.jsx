@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './editabletext.css'
 
-
-
- export default function EditableText() {
+export default function EditableText() {
   const [value, setValue] = useState('');
   const [editing, setEditing] = useState(false);
+
+  useEffect(() => {
+    const storedValue = localStorage.getItem('editableTextValue');
+    if (storedValue) {
+      setValue(storedValue);
+    }
+  }, []);
 
   const handleEdit = () => {
     setEditing(true);
@@ -13,6 +18,7 @@ import './editabletext.css'
 
   const handleSave = () => {
     setEditing(false);
+    localStorage.setItem('editableTextValue', value);
   };
 
   const handleChange = event => {
@@ -22,23 +28,21 @@ import './editabletext.css'
   return (
     <div>
       {editing ? (
-        <div >
+        <div>
           <textarea
-           className='text-area'
+            className='text-area'
             value={value}
             onChange={handleChange}
           />
-          <button onClick={handleSave}
-          className='save-btn'>Save </button>
+          <button onClick={handleSave} className='save-btn'>Save</button>
         </div>
       ) : (
         <div>
           <span>{value}</span>
-          <button onClick={handleEdit}
-          className='edit-btn'
-          >Edit</button>
+          <button onClick={handleEdit} className='edit-btn'>Edit</button>
         </div>
       )}
     </div>
   );
 }
+
