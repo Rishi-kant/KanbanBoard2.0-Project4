@@ -14,8 +14,10 @@ function App() {
     <InfoNav/>
     <Routes>
       <Route  path="/" element={ <LandingPage/> }/>
-      <Route  path="/board" element={ <Board/>}/>
-      <Route path="/card" element={<Cardinfo/>}/>
+      <Route  path="/board" element={ <Board/>}>
+      <Route path="/board/card" element={<Cardinfo/>}/>
+      </Route>
+      
     </Routes>
    
   </div>
