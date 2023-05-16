@@ -1,6 +1,6 @@
 
 import NavBar from "./navBar/NavBar"
- import style from "./App.module.css"
+import style from "./App.module.css"
 import Board from "./board/board"
 import LandingPage from "./landing/LandingPage"
 import {Routes,Route} from "react-router-dom"
