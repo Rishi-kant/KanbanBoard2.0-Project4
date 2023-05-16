@@ -50,7 +50,9 @@ export default function Card({ text ,onClick,columnInd,taskIndex}) {
 
   return (
     <>
+
     { showModal && <Cardinfo  onClose={closeShow}  columnInd={columnInd} taskIndex={taskIndex} /> }
+
     
     <div className={style.card_title}  >
       <div onClick={openShow}>
