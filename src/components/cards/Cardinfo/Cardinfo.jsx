@@ -21,10 +21,11 @@ function Cardinfo(props) {
           <div className="cardinfo-box_title">
             <BsCreditCard className="icon-title" />
           { board[props.columnInd].cards[props.taskIndex].task}
+          <h5>
+           in list  { board[props.columnInd].title}
+          </h5>
           </div>
-          <div className="title-input">
-            <input placeholder="Enter your title" />
-          </div>
+          
         </div>
         {/* box for description*/}
         <div className="cardinfo-box">
