@@ -4,6 +4,7 @@ import { MdDeleteForever } from "react-icons/md";
 import style from "./Card.module.css";
 import Cardinfo from "./Cardinfo/Cardinfo";
 import {Popover,Typography,Button,TextField} from "@mui/material"
+import { useNavigate } from "react-router-dom";
 // import makeStyles from '@mui/styles/makeStyles'
 
 // const useStyles = makeStyles({
@@ -37,13 +38,24 @@ export default function Card({ text ,onClick,columnInd,taskIndex}) {
    e.preventDefault()
    alert('updated')
   }
+  const nav =useNavigate()
+  const openShow =()=>{
+    setShowModal(true)
+    nav("/board/card")
+  }
+  const closeShow =()=>{
+    setShowModal(false)
+    nav("/board")
+  }
 
   return (
     <>
-    { showModal && <Cardinfo  onClose={()=>setShowModal(false)}  columnInd={columnInd} taskIndex={taskIndex}  /> }
+
+    { showModal && <Cardinfo  onClose={closeShow}  columnInd={columnInd} taskIndex={taskIndex} /> }
+
     
     <div className={style.card_title}  >
-      <div onClick={()=> setShowModal(true)}>
+      <div onClick={openShow}>
         <h5  >{text}</h5>
        
       </div>
