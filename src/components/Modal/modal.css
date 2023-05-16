@@ -6,7 +6,7 @@
 
 .container{
    
-    top: 0;
+    /* top: 0; */
     left: 0;
     height: 100%;
     background-color: rgba(0,0,0,0.5);
@@ -15,8 +15,8 @@
     align-items: center;
     overflow-y: auto;
     position: absolute;
-    top: 0rem;
-    left: 0rem;
+    top: 2%;
+    left: 0;
     width: 100%;
     
     

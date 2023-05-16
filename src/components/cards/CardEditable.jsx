@@ -40,7 +40,7 @@ export default function Card({ text ,onClick,columnInd,taskIndex}) {
 
   return (
     <>
-    { showModal && <Cardinfo  onClose={()=>setShowModal(false)}  columnInd={columnInd} taskIndex={taskIndex} /> }
+    { showModal && <Cardinfo  onClose={()=>setShowModal(false)}  columnInd={columnInd} taskIndex={taskIndex}  /> }
     
     <div className={style.card_title}  >
       <div onClick={()=> setShowModal(true)}>
