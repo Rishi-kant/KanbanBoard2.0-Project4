@@ -8,7 +8,7 @@ import {IoMdClose} from "react-icons/io"
 
 //this is for dispatching data
 import { useDispatch, useSelector } from "react-redux";
-import { addCard, delCard, delColumn } from "../../redux/board";
+import { addCard, delCard, delColumn, editColumnTitle } from "../../redux/board";
 import Card from "../cards/CardEditable";
 
 import MoreBtn from "../moreButton/MoreBtn";
@@ -17,10 +17,11 @@ import MoreBtn from "../moreButton/MoreBtn";
 function Column({ title, columnInd, id }) {
   const [showform, setShowForm] = useState(false);
   const [cardName, setcardName] = useState("");
-  // const [todo, setTodo] = useState([]);
-  
+  const[text,setText]=useState(title)
+  const [isEditing, setIsEditing] = useState(false);
+ 
   const [anchorEl, setanchorEl] = useState(null);
-
+ 
   // this is for dispatching data
 
   const dispatch = useDispatch();
@@ -57,11 +58,31 @@ function Column({ title, columnInd, id }) {
   const closePopover = (event) => {
     setanchorEl(null);
   };
+
+  // this is for column name editing
+  const handleDivClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      setIsEditing(false);
+      
+      dispatch(editColumnTitle({
+       columnInd,
+       newName:`${event.target.innerText}`
+      }))
+    }
+  };
   return (
     <div className={style.container}>
       <div className={style.topVeiw}>
-        <div>
-          <h3>{title}</h3>
+        <div onClick={handleDivClick} 
+      
+        contentEditable={isEditing} onKeyDown={handleKeyDown}
+        className={style.contentEditable}
+        >
+          {text}
         </div>
 
         <div>

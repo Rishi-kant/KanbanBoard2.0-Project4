@@ -1,55 +1,51 @@
 import AddBtn from "../components/addButton/AddBtn";
 import Column from "../components/column/Column";
 import style from "./Board.module.css";
-import { RxCross2 } from 'react-icons/rx';
-import { FiMoreHorizontal } from 'react-icons/fi';
+import { RxCross2 } from "react-icons/rx";
+import { FiMoreHorizontal } from "react-icons/fi";
 import React, { useState } from "react";
-import{useDispatch,useSelector}from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 import { addColumn } from "../redux/board";
-
-
-
+import InfoNav from "../infoNav/InfoNav";
 
 function Board() {
-  const[colName,setColName]=useState("")
+  const [colName, setColName] = useState("");
   const [showform, setShowForm] = useState(false);
-  const dispatch=useDispatch()
-  const board=useSelector((state)=>state.board)
+  const dispatch = useDispatch();
+  const board = useSelector((state) => state.board);
   // const board=useSelector((state)=>state.board)
-  const handleShow=()=>{
-    setShowForm(true)
-  }
-  const handleClose=()=>{
-    setShowForm(false)
-  }
+  const handleShow = () => {
+    setShowForm(true);
+  };
+  const handleClose = () => {
+    setShowForm(false);
+  };
 
-  const handleSubmit=(e)=>{
-    e.preventDefault()
-    dispatch(addColumn({title:`${colName}`}))
-    setColName("")
-  }
-  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addColumn({ title: `${colName}` }));
+    setColName("");
+  };
+
   return (
+    <>
+    <div className={style.infonav}>
+        <InfoNav  />
+      </div>
     <div className={style.container}>
       {/* <Column /> */}
       
-      
-       {
-        board.map((column,columnInd)=>(
-          <div key={columnInd}>
-            {/* <h2>{column.title}</h2> */}
-            <Column  title={column.title } columnInd={columnInd} id={column.id}/> 
-            
-          </div>
-        ))
-       }
+      {board.map((column, columnInd) => (
+        <div key={columnInd}>
+          {/* <h2>{column.title}</h2> */}
+          <Column title={column.title} columnInd={columnInd} id={column.id} />
+        </div>
+      ))}
 
       {!showform ? (
-        <AddBtn onClick={handleShow}  name={"Add a list"}/>
+        <AddBtn onClick={handleShow} name={"Add a list"} />
       ) : (
-        <form 
-        className={style.form}
-        onSubmit={handleSubmit}>
+        <form className={style.form} onSubmit={handleSubmit}>
           <div>
             <input
               value={colName}
@@ -72,6 +68,7 @@ function Board() {
         </form>
       )}
     </div>
+    </>
   );
 }
 

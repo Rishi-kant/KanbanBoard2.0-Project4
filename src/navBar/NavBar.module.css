@@ -32,3 +32,11 @@
 .navContent:hover{
     background-color: #dadce0;
 }
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.icon{
+    font-size: 30px;
+}
