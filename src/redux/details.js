@@ -1,12 +1,16 @@
 
 import {createSlice} from "@reduxjs/toolkit"
- let initialState={}
+ let initialState={
+   
+ }
 const detailSlice=createSlice({
     name:"detail",
     initialState,
     reducers:{
         addDetail:(state,action)=>{
-        return state
+        const{boardName,name}=action.payload
+        state.boardName=boardName
+        state.name=name
         }
     }
 })

@@ -13,16 +13,27 @@ export default function Card({ text, onClick, columnInd, taskIndex }) {
   // const classes =useStyles()
 
   const [anchorEl, setanchorEl] = useState(null);
+
+  const[showBtn,setShowBtn]=useState(false)
+
   const [showModal, setShowModal] = useState(false);
   const [cardName, setCardName] = useState("");
   const dispatch = useDispatch();
   const board = useSelector((state) => state.board);
+
   const openPopover = (event) => {
     setanchorEl(event.currentTarget);
   };
   const closePopover = (event) => {
     setanchorEl(null);
   };
+   const handleEnter=()=>{
+      setShowBtn(true)
+  }
+  const handleLeave=()=>{
+    setShowBtn(false)
+  }
+
   const updateTask = (e) => {
     e.preventDefault();
     dispatch(
@@ -55,15 +66,20 @@ export default function Card({ text, onClick, columnInd, taskIndex }) {
         />
       )}
 
-      <div className={style.card_title}>
+      <div className={style.card_title} onMouseEnter={handleEnter}  onMouseLeave={handleLeave}>
         <div onClick={openShow}>
           <h5>{text}</h5>
+
         </div>
 
-        <div className={style.icon}>
+          {
+        showBtn?(
+          <div className={style.icon}>
           <MdOutlineModeEditOutline onClick={openPopover} />
-          <MdDeleteForever onClick={onClick} />
+          <MdDeleteForever onClick={onClick}/>
         </div>
+        ):""
+      }
         <Popover
           open={Boolean(anchorEl)}
           onClose={closePopover}
