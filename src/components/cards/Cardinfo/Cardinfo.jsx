@@ -9,14 +9,20 @@ import { RxCross2 } from "react-icons/rx";
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 
-function Cardinfo(props) {
+function Cardinfo(props ) {
   const [showList, setShowList] = useState(false);
   const board = useSelector((state) => state.board);
+  const handleClose = () => {
+    props.onClose(); 
+    
+  };
       
   return (
-    <Modal onClose={() => props.onClose()}>
-      {/* <RxCross2 className='cross-icon'onClick={onClose} /> */}
-      <div className="cardinfo-container">
+   
+    <Modal onClose={() => props.onClose()}  >
+      <RxCross2 className='cross-icon' onClick={handleClose} />
+      <div className="cardinfo-container" >
+      
         <div className="cardinfo-box">
           <div className="cardinfo-box_title">
             <BsCreditCard className="icon-title" />
@@ -60,6 +66,7 @@ function Cardinfo(props) {
         -
       </div>
     </Modal>
+    
   );
 }
 
