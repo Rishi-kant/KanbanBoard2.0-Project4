@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuid } from "uuid";
+
 const initialState = [];
 const boardSlice = createSlice({
   name: "board",
@@ -9,8 +10,8 @@ const boardSlice = createSlice({
       const { title } = action.payload;
       state.push({
         title,
+        id:uuid(),
         cards: [],
-        id: uuid()
       });
 
     },
@@ -18,8 +19,8 @@ const boardSlice = createSlice({
       const { columnInd, task } = action.payload;
       state[columnInd].cards.push({
         task,
+        id:uuid(),
         activity: [`Task created at the time : ${new Date()}`],
-        id: uuid()
       });
     },
     delCard(state, action) {

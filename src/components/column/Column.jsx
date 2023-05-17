@@ -96,6 +96,7 @@ function Column(props) {
       {(provided, snapshot) => {
         // console.log(id)
         return (
+
           <div
             {...provided.droppableProps}
             ref={provided.innerRef}
