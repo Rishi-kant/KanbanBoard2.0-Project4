@@ -36,7 +36,7 @@ function Board() {
       {/* <Column /> */}
       
       {board.map((column, columnInd) => (
-        <div key={columnInd}>
+        <div key={column.id}>
           {/* <h2>{column.title}</h2> */}
           <Column title={column.title} columnInd={columnInd} id={column.id} />
         </div>
