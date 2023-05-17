@@ -14,7 +14,7 @@ function LandingPage() {
     e.preventDefault();
      dispatch(addDetail({
        boardName,
-       name
+       name,
      }))
      navigate("/board")
   };

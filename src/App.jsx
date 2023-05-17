@@ -13,9 +13,11 @@ function App() {
     <NavBar/>
     <Routes>
       <Route  path="/" element={ <LandingPage/> }/>
-      <Route  path="/board" element={ <Board/>}>
+      <Route  path="/board"  element={ <Board/>}>
       <Route path="/board/card" element={<Cardinfo/>}/>
       </Route>
+
+      
       
     </Routes>
    

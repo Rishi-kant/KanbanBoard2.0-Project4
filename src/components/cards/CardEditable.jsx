@@ -8,9 +8,15 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addCard ,editCard} from "../../redux/board";
 import { useState } from "react";
+import {v4 as uuid} from "uuid"
+
+// import { useHistory, useParams } from 'react-router-dom';
 
 export default function Card({ text, onClick, columnInd, taskIndex }) {
   // const classes =useStyles()
+  // const history = useHistory();
+  // const { taskId } = useParams();
+  const id = uuid()
 
   const [anchorEl, setanchorEl] = useState(null);
 
@@ -49,13 +55,14 @@ export default function Card({ text, onClick, columnInd, taskIndex }) {
   const nav = useNavigate();
   const openShow = () => {
     setShowModal(true);
+   
     nav("/board/card");
   };
   const closeShow = () => {
     setShowModal(false);
     nav("/board");
   };
-  console.log(cardName);
+  // console.log(cardName);
   return (
     <>
       {showModal && (
