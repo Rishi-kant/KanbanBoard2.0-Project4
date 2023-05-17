@@ -13,6 +13,7 @@ const boardSlice = createSlice({
         id:uuid(),
         cards: [],
       });
+
     },
     addCard(state, action) {
       const { columnInd, task } = action.payload;
@@ -35,14 +36,27 @@ const boardSlice = createSlice({
     delColumn(state, action) {
       const { columnInd } = action.payload;
       state.splice(columnInd, 1);
+     
     },
     editColumnTitle(state, action) {
       const { columnInd, newName } = action.payload;
       state[columnInd].title = newName;
     },
+    moveCard(state, action) {
+      const {
+        sourceColumnId,
+        draggableId,
+        sourceIndex,
+        destIndex,
+      } = action.payload;
+         const sourceColumn = state.find((column) => column.id === sourceColumnId);
+      const destinationColumn = state.find((column) => column.id === draggableId);
+      const card = sourceColumn.card[sourceIndex];
+      sourceColumn.card.splice(sourceIndex, 1);
+      destinationColumn.card.splice(destIndex, 0, card);     
+    },
   },
 });
-
 export const {
   addColumn,
   addCard,
@@ -50,6 +64,7 @@ export const {
   delColumn,
   editCard,
   editColumnTitle,
+  moveCard,
 } = boardSlice.actions;
 
 export default boardSlice.reducer;

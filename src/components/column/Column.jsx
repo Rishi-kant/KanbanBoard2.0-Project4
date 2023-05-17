@@ -1,29 +1,29 @@
 import React, { useState } from "react";
 import style from "./Column.module.css";
-import { FiMoreHorizontal } from "react-icons/fi";
+// import { FiMoreHorizontal } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import AddBtn from "../addButton/AddBtn";
-import { Popover,Typography, Divider} from "@mui/material";
-import {IoMdClose} from "react-icons/io"
-
-//this is for dispatching data
+import { Popover, Typography, Divider } from "@mui/material";
+import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { addCard, delCard, delColumn, editColumnTitle } from "../../redux/board";
 import Card from "../cards/CardEditable";
-
 import MoreBtn from "../moreButton/MoreBtn";
-
-
-function Column({ title, columnInd, id }) {
+import { Draggable, Droppable } from "react-beautiful-dnd";
+function Column(props) {
+  const columnInd = props.index
+  const { title, cards, id } = props.column
+  // console.log(title, cards)
+  // console.log(columnInd)
+  // console.log(id)
+  // console.log(props)
   const [showform, setShowForm] = useState(false);
-  const [cardName, setcardName] = useState("");
-  const[text,setText]=useState(title)
+  const [cardName, setCardName] = useState("");
+  const [text, setText] = useState(title);
   const [isEditing, setIsEditing] = useState(false);
- 
-  const [anchorEl, setanchorEl] = useState(null);
- 
-  // this is for dispatching data
-
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [cardNameError, setCardNameError] = useState("");
+  const [cardNameLengthError, setCardNameLengthError] = useState("");
   const dispatch = useDispatch();
   const board = useSelector((state) => state.board);
   const handleShow = () => {
@@ -32,132 +32,188 @@ function Column({ title, columnInd, id }) {
   const handleClose = () => {
     setShowForm(false);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+    if (cardName.trim() === "") {
+      setCardNameError("Card name is required");
+      return;
+    } else {
+      setCardNameError("")
+    }
+
+    if (cardName.length < 6) {
+      setCardNameLengthError("Card name must be less than 6 characters");
+      return;
+    } else {
+      setCardNameLengthError("")
+    }
     dispatch(
       addCard({
         columnInd,
         task: `${cardName}`,
       })
     );
-    setcardName("");
+    setCardName("");
     setShowForm(false);
-   
-  };
-  const deleteCard=(columnInd,taskIndex)=>{
-    dispatch(delCard({columnInd,taskIndex}))
-  }
-  // this is for deleting column
-  const deleteColumn=(columnInd)=>{
-    dispatch(delColumn({columnInd}))
-  }
-  const openPopover = (event) => {
-    setanchorEl(event.currentTarget);
-  };
-  const closePopover = (event) => {
-    setanchorEl(null);
+    setCardNameError("");
+    setCardNameLengthError("");
   };
 
-  // this is for column name editing
+  const deleteCard = (columnInd, taskIndex) => {
+    dispatch(delCard({ columnInd, taskIndex }));
+  };
+  const deleteColumn = (columnInd) => {
+    dispatch(delColumn({ columnInd }));
+  };
+
+  const openPopover = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const closePopover = (event) => {
+    setAnchorEl(null);
+  };
   const handleDivClick = () => {
     setIsEditing(true);
   };
 
   const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       setIsEditing(false);
-      
-      dispatch(editColumnTitle({
-       columnInd,
-       newName:`${event.target.innerText}`
-      }))
+
+      dispatch(
+        editColumnTitle({
+          columnInd,
+          newName: `${event.target.innerText}`,
+        })
+      );
     }
   };
   return (
-    <div className={style.container}>
-      <div className={style.topVeiw}>
-        <div onClick={handleDivClick} 
-      
-        contentEditable={isEditing} onKeyDown={handleKeyDown}
-        className={style.contentEditable}
-        >
-          {text}
-        </div>
-
-        <div>
-          
-          <MoreBtn  onClick={openPopover} />
-        </div>
-        <Popover
-        open={Boolean(anchorEl)}
-        onClose={closePopover}
-        anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-        sx={{
-          marginLeft: 25,
-          height: 280,
-          width: 700,
-          
-        }}
-      >
-        <div className={style.color}>
-        <div className={style.typo}>
-        <Typography sx={{height:150,width:200,alignItems:"center"}}>
-        <div className={style.close}><h3>List actions</h3><IoMdClose onClick={closePopover}/></div> 
-         <Divider></Divider>
-        
-      <div className={style.action}>
-        <h4>Add List...</h4>
-       <h4 onClick={()=>deleteColumn(columnInd)}>Delete List</h4>
-      </div>
-        </Typography>
-        </div>
-        </div>
-      </Popover>
-      </div>
-
-      {board[columnInd].cards.map((task, taskIndex) => {
+    // <Droppable droppableId={column.id}>
+    <Droppable droppableId={id}>
+      {(provided, snapshot) => {
+        // console.log(id)
         return (
-          <div key={task.id}>
-            <h2><Card text={task.task} onClick={()=>deleteCard(columnInd,taskIndex)}  columnInd={columnInd} taskIndex={taskIndex} /></h2>
-          </div>
-        );
-      })}
 
-      {!showform ? (
-        <AddBtn onClick={handleShow} name={"Add a card"} />
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <input
-              value={cardName}
-              onChange={(e) => setcardName(e.target.value)}
-              className={style.inp}
-              placeholder="Enter a tittle for this card"
-            />
-          </div>
-          <div className={style.addcardContainer}>
-            <div className={style.addCont2}>
-              <button type="submit" className={style.addBtn}>
-                Add card
-              </button>
-              <RxCross2 onClick={handleClose} className={style.cross} />
+          <div
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+            className={style.container}>
+            <div className={style.topVeiw}>
+              <div
+                onClick={handleDivClick}
+                contentEditable={isEditing}
+                onKeyDown={handleKeyDown}
+                className={style.contentEditable}
+              >
+                {text}
+              </div>
+              <div>
+                <MoreBtn onClick={openPopover} />
+              </div>
+              <Popover
+                open={Boolean(anchorEl)}
+                onClose={closePopover}
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                sx={{
+                  marginLeft: 25,
+                  height: 280,
+                  width: 700,
+                }}
+              >
+                <div className={style.color}>
+                  <div className={style.typo}>
+                    <Typography sx={{ height: 150, width: 200, alignItems: "center" }}>
+                      <div className={style.close}>
+                        <h3>List actions</h3>
+                        <IoMdClose onClick={closePopover} />
+                      </div>
+                      <Divider></Divider>
+                      <div className={style.action}>
+                        <h4>Add List...</h4>
+                        <h4 onClick={() => deleteColumn(columnInd)}>Delete List</h4>
+                      </div>
+                    </Typography>
+                  </div>
+                </div>
+              </Popover>
             </div>
-            <div>
-            <MoreBtn  />
-            </div>
+
+            {board[columnInd].cards.map((task, taskIndex) => {
+              // console.log(task)
+              return (
+                <Draggable draggableId={task.id} index={taskIndex} key={task.id}>
+                  {(provided, snapshot) => {
+                    return (
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        style={{
+                          userSelect: "none",
+                          ...provided.draggableProps.style,
+                        }}
+                      >
+                        <div>
+                          <h2>
+                            <Card
+                              text={task.task}
+                              onClick={() => deleteCard(columnInd, taskIndex)}
+                              columnInd={columnInd}
+                              taskIndex={taskIndex}
+                            />
+                          </h2>
+                        </div>
+                      </div>
+                    )
+                  }}
+                </Draggable>
+              );
+            })}
+
+            {!showform ? (
+              <AddBtn onClick={handleShow} name={"Add a card"} />
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <div>
+                  <input
+                    value={cardName}
+                    onChange={(e) => setCardName(e.target.value)}
+                    className={style.inp}
+                    placeholder="Enter a title for this card"
+                  />
+                  {cardNameError && <p className={style.error}>{cardNameError}</p>}
+                  {cardNameLengthError && <p className={style.error}>{cardNameLengthError}</p>}
+                </div>
+                <div className={style.addcardContainer}>
+                  <div className={style.addCont2}>
+                    <button type="submit" className={style.addBtn}>
+                      Add card
+                    </button>
+                    <RxCross2 onClick={handleClose} className={style.cross} />
+                  </div>
+                  <div>
+                    <MoreBtn />
+                  </div>
+                </div>
+              </form>
+            )}
+             {provided.placeholder}
           </div>
-        </form>
-      )}
-    </div>
+        )
+      }}
+    </Droppable>
+    
   );
 }
 
