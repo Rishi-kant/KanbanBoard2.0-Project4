@@ -55,7 +55,7 @@ export default function Card({ text, onClick, columnInd, taskIndex }) {
     setShowModal(false);
     nav("/board");
   };
-  console.log(cardName);
+  // console.log(cardName);
   return (
     <>
       {showModal && (

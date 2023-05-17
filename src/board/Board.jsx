@@ -5,9 +5,9 @@ import { RxCross2 } from "react-icons/rx";
 import { FiMoreHorizontal } from "react-icons/fi";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addColumn } from "../redux/board";
+import { addColumn,moveCard} from "../redux/board";
 import InfoNav from "../infoNav/InfoNav";
-
+import { DragDropContext } from "react-beautiful-dnd";
 function Board() {
   const [colName, setColName] = useState("");
   const [showform, setShowForm] = useState(false);
@@ -41,8 +41,26 @@ function Board() {
     setColName("");
   };
 
+  function onDragEnd(result) {
+    const { source, destination } = result;
+    if (!destination) return;
+    if (
+      source.droppableId === destination.droppableId &&
+      source.index === destination.index
+    )
+      return;
+    dispatch(
+      moveCard({
+        sourceColumnId: source.droppableId,
+        destColumnId: destination.droppableId,
+        sourceIndex: source.index,
+        destIndex: destination.index,
+      })
+    );
+  }
   return (
     <>
+    <DragDropContext onDragEnd={(result)=>onDragEnd(result)}>
     <div className={style.infonav}>
         <InfoNav  />
       </div>
@@ -50,9 +68,9 @@ function Board() {
       {/* <Column /> */}
       
       {board.map((column, columnInd) => (
-        <div key={columnInd}>
+        <div key={column.id}>
           {/* <h2>{column.title}</h2> */}
-          <Column title={column.title} columnInd={columnInd} id={column.id} />
+          <Column column={column} index={columnInd}/>
         </div>
       ))}
 
@@ -84,8 +102,8 @@ function Board() {
         </form>
       )}
     </div>
+    </DragDropContext>
     </>
   );
 }
-
 export default Board;
