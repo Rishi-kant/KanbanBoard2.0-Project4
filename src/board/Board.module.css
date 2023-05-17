@@ -60,3 +60,6 @@
 .infonav{
     width: 100vw;
 }
+.error{
+    color: red;
+}

@@ -4,7 +4,6 @@ import detailSlice from "./details.js";
 import { combineReducers } from "@reduxjs/toolkit";
 import persistReducer from "redux-persist/es/persistReducer";
 import storage from "redux-persist/lib/storage";
-
 import {
   FLUSH,
   REHYDRATE,

@@ -13,6 +13,8 @@ function Board() {
   const [showform, setShowForm] = useState(false);
   const dispatch = useDispatch();
   const board = useSelector((state) => state.board);
+  const[listerror,setListerror] = useState("")
+  const[listerrorlength,setListerrorlength] = useState("")
   // const board=useSelector((state)=>state.board)
   const handleShow = () => {
     setShowForm(true);
@@ -23,6 +25,18 @@ function Board() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(colName.trim()==''){
+      setListerror("enter lis details here")
+      return;
+    }else{
+      setListerror("")
+    }
+    if(colName.length<6){
+      setListerrorlength("List name must be less than 6 characters")
+    return;
+    }else{
+      setListerrorlength("")
+    }
     dispatch(addColumn({ title: `${colName}` }));
     setColName("");
   };
@@ -53,6 +67,8 @@ function Board() {
               className={style.inp}
               placeholder="Enter list title ..."
             />
+             {listerror && <p className={style.error}>{listerror}</p>}
+            {listerrorlength && <p className={style.error}>{listerrorlength}</p>}
           </div>
           <div className={style.addcardContainer}>
             <div className={style.addCont2}>
