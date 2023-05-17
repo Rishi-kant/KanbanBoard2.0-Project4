@@ -126,7 +126,7 @@ function Column({ title, columnInd, id }) {
 
       {board[columnInd].cards.map((task, taskIndex) => {
         return (
-          <div key={taskIndex}>
+          <div key={task.id}>
             <h2><Card text={task.task} onClick={()=>deleteCard(columnInd,taskIndex)}  columnInd={columnInd} taskIndex={taskIndex} /></h2>
           </div>
         );

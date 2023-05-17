@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./cardinfo.css";
 import { BsCreditCard } from "react-icons/bs";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
+import {FaRegHandPointRight } from "react-icons/fa";
 import EditableText from "../../Editabletext/Editabletext";
 import Modal from "../../Modal/Modal";
 import { RxCross2 } from "react-icons/rx";
@@ -55,9 +56,9 @@ function Cardinfo(props ) {
           <ul style={{ display: showList ? " none" : " block" }}>
           { board[props.columnInd].cards[props.taskIndex].activity.map((data,ind)=>{
             return(
-            <h6 key={ind}>
-                {data}
-            </h6>
+            <h4 key={ind}>
+             <FaRegHandPointRight className="hand"/>  {data}
+            </h4>
             )
           })
           
