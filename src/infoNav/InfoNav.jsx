@@ -9,6 +9,8 @@ import { updateBoardName } from "../redux/details";
 import { Button, Divider, Popover, Typography } from "@mui/material";
 import {IoIosArrowDown} from "react-icons/io"
 import { FaUserAlt } from "react-icons/fa";
+import { BsStars } from "react-icons/bs";
+import { Link } from "react-router-dom";
 // import { reset } from '../redux/board'
 function InfoNav() {
   const [text, setText] = useState();
@@ -91,8 +93,11 @@ function InfoNav() {
           {/* <h3>{detail.boardName}</h3> */}
         </div>
         <div className={style.prof}>
+        <Link to ="/back"> <Button sx={{color:"white"}}>change background<BsStars/></Button></Link>
           <h3>{detail.name}</h3>
+          
           <CgProfile />
+          
         </div>
       </div>
     </div>

@@ -25,6 +25,11 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+
+}
+.prof button:hover{
+    background-color:rgba(168, 162, 162, 0.6) ;
+   
 }
 .logOut{
    display: flex; 

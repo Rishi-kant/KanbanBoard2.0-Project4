@@ -40,3 +40,7 @@
 .icon{
     font-size: 30px;
 }
+.back{
+    display: flex;
+    flex-direction: row;
+}
