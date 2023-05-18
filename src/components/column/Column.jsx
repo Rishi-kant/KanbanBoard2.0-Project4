@@ -13,10 +13,7 @@ import { Draggable, Droppable } from "react-beautiful-dnd";
 function Column(props) {
   const columnInd = props.index
   const { title, cards, id } = props.column
-  // console.log(title, cards)
-  // console.log(columnInd)
-  // console.log(id)
-  // console.log(props)
+
   const [showform, setShowForm] = useState(false);
   const [cardName, setCardName] = useState("");
   const [text, setText] = useState(title);
@@ -42,8 +39,8 @@ function Column(props) {
       setCardNameError("")
     }
 
-    if (cardName.length < 6) {
-      setCardNameLengthError("Card name must be less than 6 characters");
+    if (cardName.length <2) {
+      setCardNameLengthError("Card name must be less than 2 characters");
       return;
     } else {
       setCardNameLengthError("")
@@ -91,10 +88,10 @@ function Column(props) {
     }
   };
   return (
-    // <Droppable droppableId={column.id}>
+    
     <Droppable droppableId={id}>
       {(provided, snapshot) => {
-        // console.log(id)
+       
         return (
 
           <div
@@ -153,7 +150,7 @@ function Column(props) {
               // console.log(task)
               return (
                 <Draggable draggableId={task.id} index={taskIndex} key={task.id}>
-                  {(provided, snapshot) => {
+                  {(provided) => {
                     return (
                       <div
                         ref={provided.innerRef}

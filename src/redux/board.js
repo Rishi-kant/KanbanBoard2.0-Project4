@@ -43,17 +43,7 @@ const boardSlice = createSlice({
       state[columnInd].title = newName;
     },
     moveCard(state, action) {
-      const {
-        sourceColumnId,
-        draggableId,
-        sourceIndex,
-        destIndex,
-      } = action.payload;
-         const sourceColumn = state.find((column) => column.id === sourceColumnId);
-      const destinationColumn = state.find((column) => column.id === draggableId);
-      const card = sourceColumn.card[sourceIndex];
-      sourceColumn.card.splice(sourceIndex, 1);
-      destinationColumn.card.splice(destIndex, 0, card);     
+     return action.payload
     },
   },
 });
