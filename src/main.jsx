@@ -10,7 +10,7 @@ import { PersistGate } from "redux-persist/es/integration/react";
 import {RecoilRoot} from "recoil"
 let persister = persistStore(store);
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+
     <BrowserRouter>
     <RecoilRoot>
       <Provider store={store}>
@@ -20,5 +20,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       </Provider>
       </RecoilRoot>
     </BrowserRouter>
-  </React.StrictMode>
+  
 );

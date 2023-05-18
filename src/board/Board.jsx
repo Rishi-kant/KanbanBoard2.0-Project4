@@ -41,7 +41,7 @@ function Board() {
     dispatch(addColumn({ title: `${colName}` }));
     setColName("");
   };
-
+   // this is something i i dont know why
   function onDragEnd(result) {
     const { source, destination } = result;
     if (!destination) return;
