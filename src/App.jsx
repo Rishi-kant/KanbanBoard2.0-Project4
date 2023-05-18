@@ -8,6 +8,7 @@ import {Routes,Route} from "react-router-dom"
 import Cardinfo from "./components/cards/Cardinfo/Cardinfo"
 
 function App() {
+  // this is second repo
   return (
   <div  className={style.container}>
     <NavBar/>
