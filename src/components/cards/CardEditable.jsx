@@ -9,13 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCard ,editCard} from "../../redux/board";
 import { useState } from "react";
 import {v4 as uuid} from "uuid"
-
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { routAtom } from "../../recoil/atom";
+import {Link} from "react-router-dom"
 // import { useHistory, useParams } from 'react-router-dom';
 
-export default function Card({ text, onClick, columnInd, taskIndex }) {
-  // const classes =useStyles()
-  // const history = useHistory();
-  // const { taskId } = useParams();
+export default function Card({ text, onClick, columnInd, taskIndex,taskId}) {
+ 
   const id = uuid()
 
   const [anchorEl, setanchorEl] = useState(null);
@@ -52,17 +52,24 @@ export default function Card({ text, onClick, columnInd, taskIndex }) {
       setanchorEl(null);
     
   };
+  // const value=useRecoilValue(routAtom)
+  // const setRout=useSetRecoilState(routAtom)
+  // const [rout,setRout]=useRecoilState(routAtom)
   const nav = useNavigate();
+  
   const openShow = () => {
     setShowModal(true);
+    //  setRout(taskId)
+    //  nav(`/board/${rout}`);
+    nav("/board/card")
    
-    nav("/board/card");
   };
   const closeShow = () => {
     setShowModal(false);
     nav("/board");
   };
-  // console.log(cardName);
+  // this is for dynamic routing
+  
   return (
     <>
       {showModal && (
@@ -74,11 +81,12 @@ export default function Card({ text, onClick, columnInd, taskIndex }) {
       )}
 
       <div className={style.card_title} onMouseEnter={handleEnter}  onMouseLeave={handleLeave}>
+       
         <div onClick={openShow}>
           <h5>{text}</h5>
 
         </div>
-
+       
           {
         showBtn?(
           <div className={style.icon}>

@@ -168,6 +168,7 @@ function Column(props) {
                               onClick={() => deleteCard(columnInd, taskIndex)}
                               columnInd={columnInd}
                               taskIndex={taskIndex}
+                              taskId={task.id}
                             />
                           </h2>
                         </div>
