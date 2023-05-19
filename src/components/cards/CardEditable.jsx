@@ -48,7 +48,7 @@ export default function Card({ text, onClick, columnInd, taskIndex,taskId}) {
         columnInd,
         taskIndex,
         cardName
-        // Newtask: `${cardName}`,
+        
       }))
       setanchorEl(null);
     
@@ -62,7 +62,7 @@ export default function Card({ text, onClick, columnInd, taskIndex,taskId}) {
 
     setShowModal(true);
 
-    nav(`/${boardId}/${cardId}`);
+    nav("/board/card");
 
   };
   const closeShow = () => {
