@@ -6,6 +6,7 @@ import { useNavigate, Routes, Route } from "react-router-dom";
 
 import Background from "./BackgroundImg/Background";
 import { useState } from "react";
+import Cardinfo from "./components/cards/Cardinfo/Cardinfo";
 
 function App() {
 

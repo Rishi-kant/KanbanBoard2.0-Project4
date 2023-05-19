@@ -8,7 +8,7 @@ import EditableText from "../../Editabletext/Editabletext";
 import Modal from "../../Modal/Modal";
 import { RxCross2 } from "react-icons/rx";
 import { useSelector } from "react-redux";
-function Cardinfo(props) {
+function Cardinfo({columnInd,taskIndex}) {
   const { boardId,cardId}=useParams()
   const[currentColumn,setCurrentColumn]=useState(" ")
   const[currentTask,setCurrentTask]=useState("")
@@ -31,9 +31,9 @@ function Cardinfo(props) {
     console.log(currentItem)
     console.log(tempTask)
     setCurrentTask(currentItem)
-    console.log("shivani")
+    
   },[])
- 
+   console.log(columnInd)
   return (
   
     <Modal onClose={handleClose}>
@@ -50,17 +50,21 @@ function Cardinfo(props) {
           </div>
           
           </div>
-        {/* box for description*/}
+        
         <div className="cardinfo-box">
           <div className="cardinfo-box_title">
             <AiOutlineMenuUnfold className="icon-title" />
             Description
           </div>
-           <div>
-           { board[props.columnInd].cards[props.taskIndex].description}
-           </div>
+          
+
+           {/* <div>
+           { board[columnInd].cards[taskIndex].description}
+           </div> */}
+
+
           <div className="title-input">
-            <EditableText   columnId={props.columnInd}  taskId={props.taskIndex}/>
+            <EditableText   columnId={currentColumn}  taskId={currentTask}/>
           </div>
         </div>
         {/* box for activity */}
