@@ -124,20 +124,20 @@ function Column(props) {
                 }}
                 sx={{
                   marginLeft: 25,
-                  height: 280,
+                  height: 150,
                   width: 700,
                 }}
               >
                 <div className={style.color}>
                   <div className={style.typo}>
-                    <Typography sx={{ height: 150, width: 200, alignItems: "center" }}>
+                    <Typography sx={{ height: 80, width: 200, alignItems: "center" }}>
                       <div className={style.close}>
                         <h3>List actions</h3>
                         <IoMdClose onClick={closePopover} />
                       </div>
                       <Divider></Divider>
                       <div className={style.action}>
-                        <h4>Add List...</h4>
+                        {/* <h4>Add List...</h4> */}
                         <h4 onClick={() => deleteColumn(columnInd)}>Delete List</h4>
                       </div>
                     </Typography>
@@ -167,6 +167,7 @@ function Column(props) {
                               onClick={() => deleteCard(columnInd, taskIndex)}
                               columnInd={columnInd}
                               taskIndex={taskIndex}
+                              taskId={task.id}
                             />
                           </h2>
                         </div>

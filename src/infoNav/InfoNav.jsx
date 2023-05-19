@@ -7,9 +7,11 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { updateBoardName } from "../redux/details";
 import { Button, Divider, Popover, Typography } from "@mui/material";
-import {IoIosArrowDown} from "react-icons/io"
+import { IoIosArrowDown } from "react-icons/io";
 import { FaUserAlt } from "react-icons/fa";
-// import { reset } from '../redux/board'
+import { BsStars } from "react-icons/bs";
+import { Link } from "react-router-dom";
+
 function InfoNav() {
   const [text, setText] = useState();
   const [isEditing, setIsEditing] = useState(false);
@@ -21,7 +23,6 @@ function InfoNav() {
     navigate("/");
   };
 
-  // this is for column name editing
   const handleDivClick = () => {
     setIsEditing(true);
   };
@@ -29,7 +30,7 @@ function InfoNav() {
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       setIsEditing(false);
-      // setNewText(event.target.innerText)
+
       dispatch(
         updateBoardName({
           newName: `${event.target.innerText}`,
@@ -70,28 +71,34 @@ function InfoNav() {
               vertical: "top",
               horizontal: "right",
             }}
-            sx={{ margin: 3}}
+            sx={{ margin: 3 }}
           >
-            <Typography varient="body2" sx={{padding:3}}>
+            <Typography varient="body2" sx={{ padding: 3 }}>
               <Divider></Divider>
               <br></br>
               <div className={style.user}>
-              <FaUserAlt/><h4>{detail.name + "'" + "s"+" " + "workspace"}</h4>
+                <FaUserAlt />
+                <h4>{detail.name + "'" + "s" + " " + "workspace"}</h4>
               </div>
             </Typography>
           </Popover>
           <div>
-            <div  onClick={openPopover}className={style.over}>
-            <Button sx={{ color: "white" }}>
-              workspace
-            </Button><IoIosArrowDown/>
+            <div onClick={openPopover} className={style.over}>
+              <Button sx={{ color: "white" }}>workspace</Button>
+              <IoIosArrowDown />
             </div>
-           
           </div>
-          {/* <h3>{detail.boardName}</h3> */}
         </div>
         <div className={style.prof}>
+          <Link to="/back">
+            {" "}
+            <Button sx={{ color: "white" }}>
+              change background
+              <BsStars />
+            </Button>
+          </Link>
           <h3>{detail.name}</h3>
+
           <CgProfile />
         </div>
       </div>

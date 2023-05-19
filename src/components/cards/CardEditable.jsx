@@ -9,11 +9,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCard ,editCard} from "../../redux/board";
 import { useState } from "react";
 import {v4 as uuid} from "uuid"
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { routAtom } from "../../recoil/atom";
+import {Link} from "react-router-dom"
 
-// import { useHistory, useParams } from 'react-router-dom';
 
-export default function Card({ text, onClick, columnInd, taskIndex }) {
-  // console.log(columnInd)
+export default function Card({ text, onClick, columnInd, taskIndex,taskId}) {
+ 
+
   const id = uuid()
 
   const [anchorEl, setanchorEl] = useState(null);
@@ -50,19 +53,23 @@ export default function Card({ text, onClick, columnInd, taskIndex }) {
       setanchorEl(null);
     
   };
+
   const nav = useNavigate();
+  
   const openShow = () => {
     const boardId=board[columnInd].id;
     const cardId=board[columnInd].cards[taskIndex].id;
 
     setShowModal(true);
+
     nav(`/${boardId}/${cardId}`);
+
   };
   const closeShow = () => {
     setShowModal(false);
     nav("/board");
   };
-  console.log(board);
+
   return (
     <>
       {showModal && (
@@ -74,11 +81,12 @@ export default function Card({ text, onClick, columnInd, taskIndex }) {
       )}
 
       <div className={style.card_title} onMouseEnter={handleEnter}  onMouseLeave={handleLeave}>
+       
         <div onClick={openShow}>
           <h5>{text}</h5>
 
         </div>
-
+       
           {
         showBtn?(
           <div className={style.icon}>

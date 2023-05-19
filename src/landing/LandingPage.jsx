@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import style from "./LandingPage.module.css";
-import {useDispatch,useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addDetail } from "../redux/details";
 
 function LandingPage() {
   const [boardName, setBoardName] = useState("");
   const [name, setName] = useState("");
-  const detail=useSelector((state)=>state.detail)
-  const dispatch=useDispatch(null)
+  const detail = useSelector((state) => state.detail);
+  const dispatch = useDispatch(null);
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-     dispatch(addDetail({
-       boardName,
-       name,
-     }))
-     navigate("/board")
+    dispatch(
+      addDetail({
+        boardName,
+        name,
+      })
+    );
+    navigate("/board");
   };
 
   return (
