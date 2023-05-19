@@ -2,40 +2,52 @@ import NavBar from "./navBar/NavBar";
 import style from "./App.module.css";
 import Board from "./board/board";
 import LandingPage from "./landing/LandingPage";
-import { Routes, Route } from "react-router-dom";
-
-
-
-//  import {useRecoilValue} from "recoil"
-import Cardinfo from "./components/cards/Cardinfo/Cardinfo"
-import { useDispatch, useSelector } from "react-redux";
-import { useRecoilValue } from "recoil"
-import { routAtom } from "./recoil/atom"
-
+import { useNavigate, Routes, Route } from "react-router-dom";
 
 import Background from "./BackgroundImg/Background";
-
+import { useState } from "react";
 
 function App() {
-  // this is second repo
-  const image=useSelector((state)=>state.background)
-  // const rout=useRecoilValue(routAtom)
+  const [img, setImg] = useState(
+    "https://images.pexels.com/photos/3377405/pexels-photo-3377405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  );
+  const [path, setPath] = useState("");
+
+  const navigate = useNavigate(null);
+  function handleClick(ele) {
+    setImg(ele.value);
+    navigate("/board");
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setImg(path);
+    setPath("");
+    navigate("/board");
+  };
+  function handleChange(e) {
+    setPath(e.target.value);
+  }
   return (
-
-  <div  className={style.container} style={{ backgroundImage: `url(${image})`}}>
-    <NavBar/>
-    <Routes>
-      <Route  path="/" element={ <LandingPage/> }/>
-       <Route path="/back" element={<Background />} />
-      <Route  path="/board" exact element={ <Board/>}/>
-      <Route path="/board/card" element={<Board/>}/>
-      
-    </Routes>
-   
-  </div>
-  )
-
- 
+    <div className={style.container} style={{ backgroundImage: `url(${img})` }}>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route
+          path="/back"
+          element={
+            <Background
+              onClick={handleClick}
+              onSubmit={handleSubmit}
+              value={path}
+              onChange={handleChange}
+            />
+          }
+        />
+        <Route path="/board" exact element={<Board />} />
+        <Route path="/board/card" element={<Board />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;

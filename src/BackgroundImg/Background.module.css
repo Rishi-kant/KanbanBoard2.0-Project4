@@ -1,4 +1,4 @@
-.container{
+ .container{
     background-color: white;
     height:92vh;
     width:100vw;
@@ -23,9 +23,11 @@
    
    
 }
-/* .btn{
+ .btn{
     height: 100px;
-} */
+} 
+
+ 
 .images{
     height: 10rem;
     width:300px;
@@ -49,11 +51,13 @@
     background-color: antiquewhite;
    
 }
-Button{
+
+
+.submit Button{
     background-color: black;
     color:white;
     margin-left:23rem;
     margin-top: 2rem;
     height:2rem;
     width:5rem;
-}
+}  
