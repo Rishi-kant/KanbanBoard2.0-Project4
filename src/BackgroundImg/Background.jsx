@@ -43,10 +43,10 @@ const Background = ({ onClick, onSubmit, value, onChange }) => {
   return (
     <div className={style.container}>
       <div className={style.input}>
-        <h1> Choose background image</h1>
+      
         <div className={style.submit}>
           <form onSubmit={onSubmit}>
-            <input value={value} onChange={onChange} />
+            <input placeholder="Enter image URL...." value={value} onChange={onChange} />
             <br></br>
             <button type="submit">submit</button>
           </form>
