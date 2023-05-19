@@ -33,22 +33,25 @@ function Cardinfo(props ) {
           </h5>
           </div>
           
-        </div>
+          </div>
         {/* box for description*/}
         <div className="cardinfo-box">
           <div className="cardinfo-box_title">
             <AiOutlineMenuUnfold className="icon-title" />
-            Description{" "}
+            Description
           </div>
+           <div>
+           { board[props.columnInd].cards[props.taskIndex].description}
+           </div>
           <div className="title-input">
-            <EditableText />
+            <EditableText   columnId={props.columnInd}  taskId={props.taskIndex}/>
           </div>
         </div>
         {/* box for activity */}
         <div className="cardinfo-box">
           <div className="cardinfo-box_title">
             <AiOutlineMenuUnfold className="icon-title" />
-            Activity{" "}
+            Activity
           </div>
           <button onClick={() => setShowList(!showList)} className="hide-btn">
             {showList ? "showList" : " HideList"}
