@@ -1,4 +1,3 @@
-
 import { configureStore } from "@reduxjs/toolkit";
 import boardSlice from "./board.js";
 import detailSlice from "./details.js";
@@ -23,7 +22,6 @@ let persistConfig = {
 let rootReducer = combineReducers({
   board: boardSlice,
   detail: detailSlice,
- 
 });
 let persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({

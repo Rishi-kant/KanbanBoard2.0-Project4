@@ -16,7 +16,7 @@ function Board() {
 
   const [listerror, setListerror] = useState("");
   const [listerrorlength, setListerrorlength] = useState("");
- 
+
   const handleShow = () => {
     setShowForm(true);
   };
@@ -41,62 +41,50 @@ function Board() {
     dispatch(addColumn({ title: `${colName}` }));
     setColName("");
   };
-   // this is something i i dont know why
+
   function onDragEnd(result) {
     const { source, destination } = result;
     if (!destination) return;
-    if (
-      source.droppableId !== destination.droppableId
-      
-    ) {
+    if (source.droppableId !== destination.droppableId) {
       const [sourceColumn] = board.filter(
         (card) => card.id === source.droppableId
       );
       const [destColumn] = board.filter(
         (card) => card.id == destination.droppableId
       );
-      const newSouceCard=[...sourceColumn.cards]
-      const  newDestCard=[...destColumn.cards]
+      const newSouceCard = [...sourceColumn.cards];
+      const newDestCard = [...destColumn.cards];
 
       const [movableCard] = newSouceCard.splice(source.index, 1);
       newDestCard.splice(destination.index, 0, movableCard);
-     const final =  board.map((element)=>{
-         if(element.id==source.droppableId){
-          return {...element,cards:newSouceCard}
-         }
-         if(element.id==destination.droppableId){
-          return {...element,cards:newDestCard}
-         }
-         return element
-       })
-       dispatch(
-        moveCard(final)
-      );
-    }
-    else{
+      const final = board.map((element) => {
+        if (element.id == source.droppableId) {
+          return { ...element, cards: newSouceCard };
+        }
+        if (element.id == destination.droppableId) {
+          return { ...element, cards: newDestCard };
+        }
+        return element;
+      });
+      dispatch(moveCard(final));
+    } else {
       const [sourceColumn] = board.filter(
         (card) => card.id === source.droppableId
       );
-      
-      const newSouceCard=[...sourceColumn.cards]
-     
+
+      const newSouceCard = [...sourceColumn.cards];
+
       const [movableCard] = newSouceCard.splice(source.index, 1);
       newSouceCard.splice(destination.index, 0, movableCard);
 
-      const final =  board.map((element)=>{
-      
-        if(element.id==destination.droppableId){
-         return {...element,cards:newSouceCard}
+      const final = board.map((element) => {
+        if (element.id == destination.droppableId) {
+          return { ...element, cards: newSouceCard };
         }
-        return element
-      })
-      dispatch(
-       moveCard(final)
-     );
-      
+        return element;
+      });
+      dispatch(moveCard(final));
     }
-   
-   
   }
   return (
     <>
