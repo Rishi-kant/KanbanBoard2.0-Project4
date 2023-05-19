@@ -20,6 +20,7 @@ const boardSlice = createSlice({
       state[columnInd].cards.push({
         task,
         id:uuid(),
+        description:"",
         activity: [`Task created at the time : ${new Date()}`],
       });
     },
@@ -45,6 +46,10 @@ const boardSlice = createSlice({
     moveCard(state, action) {
      return action.payload
     },
+    addDescription(state,action){
+       const{data,columnId,taskId}=action.payload
+       state[columnId].cards[taskId].description=data
+    }
   },
 });
 export const {
@@ -55,6 +60,7 @@ export const {
   editCard,
   editColumnTitle,
   moveCard,
+  addDescription
 } = boardSlice.actions;
 
 export default boardSlice.reducer;
