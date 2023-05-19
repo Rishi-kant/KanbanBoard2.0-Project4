@@ -13,13 +13,9 @@ function App() {
   <div  className={style.container}>
     <NavBar/>
     <Routes>
-      <Route  path="/" element={ <LandingPage/> }/>
-      <Route  path="/board"  element={ <Board/>}>
-      <Route path="/board/card" element={<Cardinfo/>}/>
-      </Route>
-
-      
-      
+      <Route path="/" element={ <LandingPage/> }/>
+      <Route path="/board"  element={ <Board/>}/>
+      <Route path="/:boardId/:cardId" element={<Cardinfo/>}/>
     </Routes>
    
   </div>

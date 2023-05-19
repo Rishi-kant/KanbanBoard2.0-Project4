@@ -13,9 +13,7 @@ import {v4 as uuid} from "uuid"
 // import { useHistory, useParams } from 'react-router-dom';
 
 export default function Card({ text, onClick, columnInd, taskIndex }) {
-  // const classes =useStyles()
-  // const history = useHistory();
-  // const { taskId } = useParams();
+  // console.log(columnInd)
   const id = uuid()
 
   const [anchorEl, setanchorEl] = useState(null);
@@ -54,15 +52,17 @@ export default function Card({ text, onClick, columnInd, taskIndex }) {
   };
   const nav = useNavigate();
   const openShow = () => {
+    const boardId=board[columnInd].id;
+    const cardId=board[columnInd].cards[taskIndex].id;
+
     setShowModal(true);
-   
-    nav("/board/card");
+    nav(`/${boardId}/${cardId}`);
   };
   const closeShow = () => {
     setShowModal(false);
     nav("/board");
   };
-  // console.log(cardName);
+  console.log(board);
   return (
     <>
       {showModal && (

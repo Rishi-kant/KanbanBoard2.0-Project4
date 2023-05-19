@@ -1,7 +1,5 @@
-
-import {atom} from "recoil"
-
+ import {atom} from "recoil"
  export const authAtom=atom({
     key:"auth",
     default:{}
-})
+ }) 
