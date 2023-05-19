@@ -12,10 +12,11 @@ import {v4 as uuid} from "uuid"
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { routAtom } from "../../recoil/atom";
 import {Link} from "react-router-dom"
-// import { useHistory, useParams } from 'react-router-dom';
+
 
 export default function Card({ text, onClick, columnInd, taskIndex,taskId}) {
  
+
   const id = uuid()
 
   const [anchorEl, setanchorEl] = useState(null);
@@ -52,24 +53,23 @@ export default function Card({ text, onClick, columnInd, taskIndex,taskId}) {
       setanchorEl(null);
     
   };
-  // const value=useRecoilValue(routAtom)
-  // const setRout=useSetRecoilState(routAtom)
-  // const [rout,setRout]=useRecoilState(routAtom)
+
   const nav = useNavigate();
   
   const openShow = () => {
+    const boardId=board[columnInd].id;
+    const cardId=board[columnInd].cards[taskIndex].id;
+
     setShowModal(true);
-    //  setRout(taskId)
-    //  nav(`/board/${rout}`);
-    nav("/board/card")
-   
+
+    nav(`/${boardId}/${cardId}`);
+
   };
   const closeShow = () => {
     setShowModal(false);
     nav("/board");
   };
-  // this is for dynamic routing
-  
+
   return (
     <>
       {showModal && (

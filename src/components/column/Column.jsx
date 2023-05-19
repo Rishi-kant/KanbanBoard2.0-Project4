@@ -145,7 +145,6 @@ function Column(props) {
                 </div>
               </Popover>
             </div>
-
             {board[columnInd].cards.map((task, taskIndex) => {
               // console.log(task)
               return (
@@ -210,8 +209,7 @@ function Column(props) {
           </div>
         )
       }}
-    </Droppable>
-    
+    </Droppable>    
   );
 }
 

@@ -8,6 +8,7 @@ import Background from "./BackgroundImg/Background";
 import { useState } from "react";
 
 function App() {
+
   const [img, setImg] = useState(
     "https://images.pexels.com/photos/3377405/pexels-photo-3377405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   );
@@ -43,11 +44,13 @@ function App() {
             />
           }
         />
-        <Route path="/board" exact element={<Board />} />
-        <Route path="/board/card" element={<Board />} />
+         <Route path="/" element={ <LandingPage/> }/>
+         <Route path="/board"  element={ <Board/>}/>
+        <Route path="/:boardId/:cardId" element={<Cardinfo/>}/>
       </Routes>
     </div>
   );
+
 }
 
 export default App;

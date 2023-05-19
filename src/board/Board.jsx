@@ -13,7 +13,6 @@ function Board() {
   const [showform, setShowForm] = useState(false);
   const dispatch = useDispatch();
   const board = useSelector((state) => state.board);
-
   const [listerror, setListerror] = useState("");
   const [listerrorlength, setListerrorlength] = useState("");
 
