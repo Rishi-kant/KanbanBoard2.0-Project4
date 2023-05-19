@@ -1,6 +1,6 @@
 import NavBar from "./navBar/NavBar";
 import style from "./App.module.css";
-import Board from "./board/Board";
+import Board from "./board/board";
 import LandingPage from "./landing/LandingPage";
 import { useNavigate, Routes, Route } from "react-router-dom";
 
@@ -8,7 +8,6 @@ import Background from "./BackgroundImg/Background";
 import { useState } from "react";
 
 function App() {
-
   const [img, setImg] = useState(
     "https://images.pexels.com/photos/3377405/pexels-photo-3377405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   );
@@ -44,13 +43,11 @@ function App() {
             />
           }
         />
-         <Route path="/" element={ <LandingPage/> }/>
-         <Route path="/board"  element={ <Board/>}/>
-        <Route path="/:boardId/:cardId" element={<Cardinfo/>}/>
+        <Route path="/board" exact element={<Board />} />
+        <Route path="/board/card" element={<Board />} />
       </Routes>
     </div>
   );
-
 }
 
 export default App;
