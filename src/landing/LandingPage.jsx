@@ -22,6 +22,7 @@ function LandingPage() {
   };
 
   return (
+    
     <div className={style.container}>
       <div className={style.head}>
         <h3>Create a board</h3>
@@ -50,6 +51,8 @@ function LandingPage() {
         </div>
       </form>
     </div>
+   
+    
   );
 }
 
