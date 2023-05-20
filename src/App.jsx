@@ -1,6 +1,6 @@
 import NavBar from "./navBar/NavBar";
 import style from "./App.module.css";
-import Board from "./board/board";
+import Board from "./board/Board";
 import LandingPage from "./landing/LandingPage";
 import { useNavigate, Routes, Route } from "react-router-dom";
 
