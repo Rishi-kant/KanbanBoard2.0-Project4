@@ -12,7 +12,12 @@ import {GrCircleInformation} from "react-icons/gr"
 import { FaUserAlt } from "react-icons/fa";
 import { BsFillQuestionSquareFill, BsStars } from "react-icons/bs";
 import { Link } from "react-router-dom";
+
 import ImageChange from "../components/ImageChange/ImageChange";
+=======
+import { resetBourd } from "../redux/board";
+
+// this is for removing data from persist
 
 function InfoNav() {
   const [text, setText] = useState();
@@ -23,6 +28,7 @@ function InfoNav() {
   const dispatch = useDispatch(null);
   const navigate = useNavigate(null);
   const logoutClick = () => {
+    dispatch(resetBourd())
     navigate("/");
   };
 
@@ -57,8 +63,9 @@ function InfoNav() {
     <div className={style.container}>
       <div className={style.inner}>
         <div className={style.logOut}>
-          <BiLogOut className={style.logIcon} onClick={logoutClick} />
-
+         <button  className={style.logIcon}   onClick={logoutClick} >
+          <BiLogOut />
+          </button>
           <div
             onClick={handleDivClick}
             contentEditable={isEditing}

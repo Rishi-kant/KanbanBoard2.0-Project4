@@ -2,16 +2,16 @@ import React from "react";
 import style from "./Background.module.css";
 
 const imgs = [
-  { id: 0, value: "https://wallpaperaccess.com/full/2637581.jpg" },
+  { id: 0, value: "https://wallpaper.dog/large/10872123.jpg" },
   {
     id: 1,
     value:
-      "https://images.pexels.com/photos/2779863/pexels-photo-2779863.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://i.pinimg.com/originals/3d/12/7c/3d127c64bd8501958892473f04c95ae5.jpg",
   },
   {
     id: 2,
     value:
-      "https://images.pexels.com/photos/757240/pexels-photo-757240.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://wallpaperaccess.com/full/17520.jpg",
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const imgs = [
   {
     id: 4,
     value:
-      "https://images.pexels.com/photos/2020376/pexels-photo-2020376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images8.alphacoders.com/712/712496.jpg",
   },
   {
     id: 5,
@@ -30,12 +30,12 @@ const imgs = [
   {
     id: 6,
     value:
-      "https://tse1.mm.bing.net/th?id=OIP.Vp85Ze6wa30zLmWE74dzUwHaEK&pid=Api&P=0&h=180",
+      "https://wallpapers.com/images/featured/p5ztqfie3vnj5kkp.jpg",
   },
   {
     id: 6,
     value:
-      "https://tse4.mm.bing.net/th?id=OIP.6XjtiLgfKjU9qHDTbpbFmQHaEK&pid=Api&P=0&h=180",
+      "https://cdn.wallpapersafari.com/94/51/NUsItf.jpg",
   },
 ];
 
@@ -45,10 +45,10 @@ const Background = ({ onClick, onSubmit, value, onChange }) => {
       <div className={style.input}>
       
         <div className={style.submit}>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit} className={style.form}>
             <input placeholder="Enter image URL...." value={value} onChange={onChange} />
-            <br></br>
-            <button type="submit">submit</button>
+           
+            <button type="submit" >submit</button>
           </form>
         </div>
       </div>

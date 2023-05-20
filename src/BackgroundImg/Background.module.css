@@ -10,11 +10,15 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 }
 
 .input {
   height: 50vh;
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .image {
   flex: 2;
@@ -22,8 +26,10 @@
   flex-direction: row;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-left: 3rem;
-  margin-bottom: 1rem;
+  /* margin-left: 3rem;
+  margin-bottom: 1rem; */
+  align-items: center;
+  justify-content: center;
 }
 .btn {
   height: 100px;
@@ -34,27 +40,39 @@
   width: 300px;
   border-radius: 0.5rem;
   box-shadow: 10px 10px 5px rgb(8, 54, 70);
+  cursor: pointer;
 }
 .images:hover {
   transform: scale(1.1);
 }
 .submit {
-  margin-left: 18rem;
-  margin-top: 2rem;
+ 
+ 
 }
 .submit input {
-  width: 50rem;
+  width:70vw;
   height: 3rem;
   border-radius: 0.3rem;
-
   background-color: antiquewhite;
+  box-shadow:2px 2px 7px  rgb(8, 54, 70);
 }
-
 .submit Button {
   background-color: black;
   color: white;
-  margin-left: 23rem;
-  margin-top: 2rem;
-  height: 2rem;
-  width: 5rem;
+  margin-left: 1rem;
+  border-radius: 10px;
+  border: none;
+  height: 3rem;
+  width: 7rem;
+  cursor: pointer;
+  box-shadow:2px 2px 7px  rgb(8, 54, 70);
+}
+.submit Button:hover{
+  transform: scale(1.1);
+}
+.form{
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -49,7 +49,11 @@ const boardSlice = createSlice({
     addDescription(state,action){
        const{data,columnId,taskId}=action.payload
        state[columnId].cards[taskId].description=data
+    },
+    resetBourd(state){
+      return initialState
     }
+    
   },
 });
 export const {
@@ -60,7 +64,8 @@ export const {
   editCard,
   editColumnTitle,
   moveCard,
-  addDescription
+  addDescription,
+  resetBourd
 } = boardSlice.actions;
 
 export default boardSlice.reducer;
