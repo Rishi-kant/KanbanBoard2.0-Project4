@@ -32,7 +32,7 @@ function NavBar() {
     <div className={style.container}>
       <div className={style.innerContainer}>
         <div className={style.logo}>
-          <BsKanbanFill className={style.icon} /> <h1>KanBan</h1>
+          <BsKanbanFill className={style.icon} /> <h2>CONWIP</h2>
         </div>
         <div className={style.rightNav}>
           <div>
