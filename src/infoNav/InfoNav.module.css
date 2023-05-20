@@ -31,9 +31,9 @@
 .logIcon {
   font-size: 25px;
   cursor: pointer;
-  background-color: rgba(0,0,0,.1);
+  background-color: rgba(175, 166, 166, 0.1);
   border: none;
-  color: white;  
+  color: rgb(12, 12, 12);  
   padding-left: 1px;
   padding-right: 7px;
   padding-top: 2px;
@@ -63,4 +63,11 @@
   flex-direction: row;
   gap: 1rem;
   color: rgb(147, 147, 238);
+}
+.Logout{
+  display: flex;
+  flex-direction: row;
+  gap:1rem;
+  align-items: top;
+  color:rgb(77, 77, 184)
 }

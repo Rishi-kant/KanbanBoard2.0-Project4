@@ -45,10 +45,7 @@
 .images:hover {
   transform: scale(1.1);
 }
-.submit {
- 
- 
-}
+
 .submit input {
   width:70vw;
   height: 3rem;

@@ -14,7 +14,7 @@ import { BsFillQuestionSquareFill, BsStars } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 import ImageChange from "../components/ImageChange/ImageChange";
-=======
+
 import { resetBourd } from "../redux/board";
 
 // this is for removing data from persist
@@ -24,6 +24,7 @@ function InfoNav() {
   const [isEditing, setIsEditing] = useState(false);
   const [anchorEl, setanchorEl] = useState(null);
   const [anchor, setanchor] = useState(null);
+  const [pop, setPop] = useState(null);
   const detail = useSelector((state) => state.detail);
   const dispatch = useDispatch(null);
   const navigate = useNavigate(null);
@@ -59,13 +60,17 @@ function InfoNav() {
   const closePop = (event) => {
     setanchor(null);
   };
+  const open = (event) => {
+    setPop(event.currentTarget);
+  };
+  const close = (event) => {
+    setPop(null);
+  };
   return (
     <div className={style.container}>
       <div className={style.inner}>
         <div className={style.logOut}>
-         <button  className={style.logIcon}   onClick={logoutClick} >
-          <BiLogOut />
-          </button>
+        
           <div
             onClick={handleDivClick}
             contentEditable={isEditing}
@@ -140,7 +145,25 @@ function InfoNav() {
           </Link>
           <h3>{detail.name}</h3>
 
-          <CgProfile />
+          <Popover
+            open={Boolean(pop)}
+            onClose={close}
+            anchorEl={pop}
+            className={style.pop}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            sx={{ margin: 2}}
+          ><Typography sx={{height:30,margin:2}}><div className={style.Logout}> <button  className={style.logIcon}   onClick={logoutClick} >
+          <BiLogOut />
+          </button><h4>Logout</h4></div></Typography></Popover>
+
+          <CgProfile onClick={open} />
         </div>
       </div>
     </div>

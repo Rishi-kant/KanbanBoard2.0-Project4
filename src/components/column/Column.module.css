@@ -11,6 +11,8 @@
     align-items: center;
     gap: 1rem;
     padding-bottom: 1rem;
+    box-shadow:2px 5px 7px  rgb(68, 67, 68);
+    
 }
 
 .topVeiw{
