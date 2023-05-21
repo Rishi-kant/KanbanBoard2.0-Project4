@@ -9,10 +9,12 @@ import { useState } from "react";
 
 function App() {
   const [img, setImg] = useState(
-    "https://images.pexels.com/photos/3377405/pexels-photo-3377405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    "https://wallpaper.dog/large/10872123.jpg"
   );
   const [path, setPath] = useState("");
-
+  
+ 
+ 
   const navigate = useNavigate(null);
   function handleClick(ele) {
     setImg(ele.value);
@@ -44,7 +46,7 @@ function App() {
           }
         />
         <Route path="/board" exact element={<Board />} />
-        <Route path="/board/card" element={<Board />} />
+        <Route path="/board/:taskId" element={<Board />} />
       </Routes>
     </div>
   );

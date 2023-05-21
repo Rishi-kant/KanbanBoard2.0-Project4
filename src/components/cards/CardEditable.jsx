@@ -9,13 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCard ,editCard} from "../../redux/board";
 import { useState } from "react";
 import {v4 as uuid} from "uuid"
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import {useParams} from "react-router-dom"
+import { useSetRecoilState } from "recoil";
 import { routAtom } from "../../recoil/atom";
-import {Link} from "react-router-dom"
-
-
 export default function Card({ text, onClick, columnInd, taskIndex,taskId}) {
- 
+  
+  const setRout=useSetRecoilState(routAtom)
 
   const id = uuid()
 
@@ -57,12 +56,11 @@ export default function Card({ text, onClick, columnInd, taskIndex,taskId}) {
   const nav = useNavigate();
   
   const openShow = () => {
-    const boardId=board[columnInd].id;
-    const cardId=board[columnInd].cards[taskIndex].id;
+    
 
     setShowModal(true);
-
-    nav("/board/card");
+     setRout(taskId)
+    nav(`/board/${taskId}`);
 
   };
   const closeShow = () => {

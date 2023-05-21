@@ -1,8 +1,8 @@
 import React from "react";
 import style from "./NavBar.module.css";
 import { useState } from "react";
-import { BsFillQuestionSquareFill, BsKanbanFill } from "react-icons/bs";
-import {AiOutlineQuestionCircle } from "react-icons/ai";
+import { BsKanbanFill } from "react-icons/bs";
+import { AiOutlineQuestionCircle } from "react-icons/ai";
 
 import MoreBtn from "../components/moreButton/MoreBtn";
 
@@ -29,7 +29,7 @@ function NavBar() {
         <div className={style.rightNav}>
           <div>
             <div onClick={openPop}>
-              <AiOutlineQuestionCircle className={style.infoIcon}/>
+              <AiOutlineQuestionCircle className={style.infoIcon} />
             </div>
 
             <Popover
@@ -54,9 +54,7 @@ function NavBar() {
 
             {/*  */}
           </div>
-          <div className={style.back}>
-            <MoreBtn />
-          </div>
+          <div className={style.back}>{/* <MoreBtn /> */}</div>
         </div>
       </div>
     </div>
