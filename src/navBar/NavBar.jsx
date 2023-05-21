@@ -1,33 +1,24 @@
 import React from "react";
 import style from "./NavBar.module.css";
+import { useState } from "react";
+import { BsFillQuestionSquareFill, BsKanbanFill } from "react-icons/bs";
 
-import { BsKanbanFill } from "react-icons/bs";
-import { AiOutlineClear } from "react-icons/ai";
 import MoreBtn from "../components/moreButton/MoreBtn";
-import { useDispatch } from "react-redux";
-// this is for clear button
+
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
-import { resetBourd } from "../redux/board";
+
+import ImageChange from "../components/ImageChange/ImageChange";
 
 function NavBar() {
-
-  const dispatch = useDispatch(null);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handlePopoverOpen = (event) => {
-    setAnchorEl(event.currentTarget);
+  const [anchor, setanchor] = useState(null);
+  const openPop = (event) => {
+    setanchor(event.currentTarget);
+  };
+  const closePop = (event) => {
+    setanchor(null);
   };
 
-  const handlePopoverClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-   // this function is for clear board
-  const clearBoard=()=>{
-    dispatch(resetBourd())
-  }
   return (
     <div className={style.container}>
       <div className={style.innerContainer}>
@@ -36,38 +27,29 @@ function NavBar() {
         </div>
         <div className={style.rightNav}>
           <div>
-            
-              <Typography
-                aria-owns={open ? "mouse-over-popover" : undefined}
-                aria-haspopup="true"
-                onMouseEnter={handlePopoverOpen}
-                onMouseLeave={handlePopoverClose}
-              >
-                <div>
-                <AiOutlineClear className={style.clearIcon} onClick={clearBoard}/>
-                </div>
+            <div onClick={openPop}>
+              <BsFillQuestionSquareFill />
+            </div>
+
+            <Popover
+              open={Boolean(anchor)}
+              onClose={closePop}
+              anchorEl={anchor}
+              className={style.pop}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              sx={{ margin: 3, width: 380 }}
+            >
+              <Typography varient="body2" sx={{ padding: 3 }}>
+                <ImageChange />
               </Typography>
-              <Popover
-                id="mouse-over-popover"
-                sx={{
-                  pointerEvents: "none",
-                }}
-                open={open}
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                onClose={handlePopoverClose}
-                disableRestoreFocus
-              >
-                <Typography sx={{ p: 1 }}>Clear board </Typography>
-              </Popover>
-           
+            </Popover>
 
             {/*  */}
           </div>

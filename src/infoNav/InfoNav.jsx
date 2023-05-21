@@ -7,29 +7,28 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { updateBoardName } from "../redux/details";
 import { Button, Divider, Popover, Typography } from "@mui/material";
-import { IoIosArrowDown} from "react-icons/io";
-import {GrCircleInformation} from "react-icons/gr"
+import { IoIosArrowDown } from "react-icons/io";
+
 import { FaUserAlt } from "react-icons/fa";
-import { BsFillQuestionSquareFill, BsStars } from "react-icons/bs";
+import { BsStars } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-import ImageChange from "../components/ImageChange/ImageChange";
-
 import { resetBourd } from "../redux/board";
+import { AiOutlineClear } from "react-icons/ai";
 
 // this is for removing data from persist
 
 function InfoNav() {
-  const [text, setText] = useState();
   const [isEditing, setIsEditing] = useState(false);
   const [anchorEl, setanchorEl] = useState(null);
-  const [anchor, setanchor] = useState(null);
+  const [AnchorEl, SetAnchorEl] = React.useState(null);
+
   const [pop, setPop] = useState(null);
   const detail = useSelector((state) => state.detail);
   const dispatch = useDispatch(null);
   const navigate = useNavigate(null);
   const logoutClick = () => {
-    dispatch(resetBourd())
+    dispatch(resetBourd());
     navigate("/");
   };
 
@@ -54,23 +53,31 @@ function InfoNav() {
   const closePopover = (event) => {
     setanchorEl(null);
   };
-  const openPop = (event) => {
-    setanchor(event.currentTarget);
-  };
-  const closePop = (event) => {
-    setanchor(null);
-  };
+
   const open = (event) => {
     setPop(event.currentTarget);
   };
   const close = (event) => {
     setPop(null);
   };
+
+  const handlePopoverOpen = (event) => {
+    SetAnchorEl(event.currentTarget);
+  };
+
+  const handlePopoverClose = () => {
+    SetAnchorEl(null);
+  };
+
+  const Open = Boolean(AnchorEl);
+  // this function is for clear board
+  const clearBoard = () => {
+    dispatch(resetBourd());
+  };
   return (
     <div className={style.container}>
       <div className={style.inner}>
         <div className={style.logOut}>
-        
           <div
             onClick={handleDivClick}
             contentEditable={isEditing}
@@ -101,7 +108,6 @@ function InfoNav() {
                 <FaUserAlt />
                 <h4>{detail.name + "'" + "s" + " " + "workspace"}</h4>
               </div>
-             
             </Typography>
           </Popover>
           <div>
@@ -109,31 +115,41 @@ function InfoNav() {
               <Button sx={{ color: "white" }}>workspace</Button>
               <IoIosArrowDown />
             </div>
-           
           </div>
+
+          <Typography
+            aria-owns={Open ? "mouse-over-popover" : undefined}
+            aria-haspopup="true"
+            onMouseEnter={handlePopoverOpen}
+            onMouseLeave={handlePopoverClose}
+          >
+            <div>
+              <AiOutlineClear
+                className={style.clearIcon}
+                onClick={clearBoard}
+              />
+            </div>
+          </Typography>
           <Popover
-            open={Boolean(anchor)}
-            onClose={closePop}
-            anchorEl={anchor}
-            className={style.pop}
+            id="mouse-over-popover"
+            sx={{
+              pointerEvents: "none",
+            }}
+            open={Open}
+            anchorEl={AnchorEl}
             anchorOrigin={{
               vertical: "bottom",
-              horizontal: "right",
+              horizontal: "left",
             }}
             transformOrigin={{
               vertical: "top",
-              horizontal: "right",
+              horizontal: "left",
             }}
-            sx={{ margin: 3, width:380}}
+            onClose={handlePopoverClose}
+            disableRestoreFocus
           >
-            <Typography varient="body2" sx={{ padding: 3 }}>
-             
-           
-              <ImageChange/>
-             
-            </Typography>
+            <Typography sx={{ p: 1 }}>Clear board </Typography>
           </Popover>
-          <div onClick={openPop}><BsFillQuestionSquareFill/></div>
         </div>
         <div className={style.prof}>
           <Link to="/back">
@@ -158,10 +174,18 @@ function InfoNav() {
               vertical: "top",
               horizontal: "right",
             }}
-            sx={{ margin: 2}}
-          ><Typography sx={{height:30,margin:2}}><div className={style.Logout}> <button  className={style.logIcon}   onClick={logoutClick} >
-          <BiLogOut />
-          </button><h4>Logout</h4></div></Typography></Popover>
+            sx={{ margin: 2 }}
+          >
+            <Typography sx={{ height: 30, margin: 2 }}>
+              <div className={style.Logout}>
+                {" "}
+                <button className={style.logIcon} onClick={logoutClick}>
+                  <BiLogOut />
+                </button>
+                <h4>Logout</h4>
+              </div>
+            </Typography>
+          </Popover>
 
           <CgProfile onClick={open} />
         </div>
