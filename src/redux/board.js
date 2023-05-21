@@ -10,18 +10,17 @@ const boardSlice = createSlice({
       const { title } = action.payload;
       state.push({
         title,
-        id:uuid(),
+        id: uuid(),
         cards: [],
       });
-
     },
     addCard(state, action) {
       const { columnInd, task } = action.payload;
       state[columnInd].cards.push({
         task,
-        id:uuid(),
-        description:"",
-        activity: [`Task created at the time : ${new Date()}`],
+        id: uuid(),
+        description: "",
+        activity: [`Task created at the time: ${new Date()}`],
       });
     },
     delCard(state, action) {
@@ -30,28 +29,32 @@ const boardSlice = createSlice({
     },
     editCard(state, action) {
       const { columnInd, taskIndex, cardName } = action.payload;
-
       state[columnInd].cards[taskIndex].task = cardName;
     },
-
     delColumn(state, action) {
       const { columnInd } = action.payload;
       state.splice(columnInd, 1);
-     
     },
     editColumnTitle(state, action) {
       const { columnInd, newName } = action.payload;
       state[columnInd].title = newName;
     },
     moveCard(state, action) {
-     return action.payload
+      return action.payload;
     },
-    addDescription(state,action){
-       const{data,columnId,taskId}=action.payload
-       state[columnId].cards[taskId].description=data
-    }
+    addDescription(state, action) {
+      const { boardId, cardId, data } = action.payload;
+      const column = state.find((column) => column.id === boardId);
+      if (column) {
+        const card = column.cards.find((card) => card.id === cardId);
+        if (card) {
+          card.description = data;
+        }
+      }
+    },
   },
 });
+
 export const {
   addColumn,
   addCard,
@@ -60,7 +63,7 @@ export const {
   editCard,
   editColumnTitle,
   moveCard,
-  addDescription
+  addDescription,
 } = boardSlice.actions;
 
 export default boardSlice.reducer;

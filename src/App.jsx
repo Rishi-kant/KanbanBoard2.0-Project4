@@ -2,6 +2,7 @@ import NavBar from "./navBar/NavBar";
 import style from "./App.module.css";
 import Board from "./board/Board";
 import LandingPage from "./landing/LandingPage";
+import Cardinfo from "./components/cards/Cardinfo/Cardinfo";
 import { useNavigate, Routes, Route } from "react-router-dom";
 
 import Background from "./BackgroundImg/Background";
