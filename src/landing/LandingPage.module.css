@@ -1,7 +1,8 @@
 .container {
   width: 50vw;
   height: 60vh;
-  background-color: #242b2e;
+  /* background-color: #242b2e; */
+  background-color: rgba(0, 0, 0, 0.4);
   color: azure;
   display: flex;
   flex-direction: column;

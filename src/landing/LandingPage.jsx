@@ -12,6 +12,11 @@ function LandingPage() {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(name===""||boardName===""){
+    alert("Details are required")
+ 
+    return
+    }
     dispatch(
       addDetail({
         boardName,
