@@ -45,14 +45,5 @@
   justify-content: center;
   gap: 2rem;
 }
-.clearIcon{
- color: white;
- font-size: 22px;
- cursor: pointer;
- margin-left: 40px ;
-}
-.clearIcon:hover{
-  transform: scale(1.2);
-}
 
 
