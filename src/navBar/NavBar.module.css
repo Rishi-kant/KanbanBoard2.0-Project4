@@ -46,4 +46,10 @@
   gap: 2rem;
 }
 
-
+.infoIcon{
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.infoIcon:hover{
+  transform: scale(1.2);
+}

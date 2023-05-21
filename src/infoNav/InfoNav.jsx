@@ -187,7 +187,7 @@ function InfoNav() {
             </Typography>
           </Popover>
 
-          <CgProfile onClick={open} />
+          <CgProfile onClick={open}  className={style.profileIcon}/>
         </div>
       </div>
     </div>
