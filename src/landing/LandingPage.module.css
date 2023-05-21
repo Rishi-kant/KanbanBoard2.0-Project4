@@ -43,3 +43,7 @@
   justify-content: center;
   gap: 2rem;
 }
+.error{
+  color:red;
+  margin-left: 7rem;
+}
