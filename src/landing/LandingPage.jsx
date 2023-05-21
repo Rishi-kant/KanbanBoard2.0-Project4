@@ -7,16 +7,29 @@ import { addDetail } from "../redux/details";
 function LandingPage() {
   const [boardName, setBoardName] = useState("");
   const [name, setName] = useState("");
+  const [boardNameError, setboarddNameError] = useState("");
+  const [NameError, setNameError] = useState("");
+ 
   const detail = useSelector((state) => state.detail);
   const dispatch = useDispatch(null);
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(name===""||boardName===""){
-    alert("Details are required")
- 
-    return
+    if((boardName.trim() === "")&&(name.trim() === "")){
+      setboarddNameError("Board Name are required")
+      setNameError(" Name are required")
+      return
     }
+    if (boardName.trim() === ""){
+      setboarddNameError("Board Name are required")
+ return
+   
+    }
+   if(name.trim() === ""){
+      setNameError(" Name are required")
+   return
+    
+      } 
     dispatch(
       addDetail({
         boardName,
@@ -40,7 +53,11 @@ function LandingPage() {
             value={boardName}
             onChange={(e) => setBoardName(e.target.value)}
           />
+         
+        {boardNameError && <p className={style.error}>{boardNameError}</p>}
+        
         </div>
+       
         <div className={style.name}>
           <label aria-required> Your name :-</label>
           <input
@@ -48,11 +65,17 @@ function LandingPage() {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
+        
+        {NameError && <p className={style.error}>{NameError}</p>}
+         
         </div>
+       
         <div>
+       
           <button type="submit" className={style.btn}>
             Create
           </button>
+
         </div>
       </form>
     </div>
