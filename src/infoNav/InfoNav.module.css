@@ -80,4 +80,11 @@
  .clearIcon:hover{
    transform: scale(1.2);
  }
+ .profileIcon{
+  cursor: pointer;
+  font-size: 1.3rem;
+ }
+ .profileIcon:hover{
+  transform: scale(1.2);
+ }
  

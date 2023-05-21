@@ -42,6 +42,7 @@ function Board() {
   };
 
   function onDragEnd(result) {
+    
     const { source, destination } = result;
     if (!destination) return;
     if (source.droppableId !== destination.droppableId) {
