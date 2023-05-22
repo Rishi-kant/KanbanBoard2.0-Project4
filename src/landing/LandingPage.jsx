@@ -16,20 +16,24 @@ function LandingPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if((boardName.trim() === "")&&(name.trim() === "")){
-      setboarddNameError("Board Name are required")
-      setNameError(" Name are required")
+      setboarddNameError("Board Name is required")
+      setNameError(" Name is required")
       return
+    }else {
+      setboarddNameError("")
+      setNameError("")
     }
     if (boardName.trim() === ""){
-      setboarddNameError("Board Name are required")
+      setboarddNameError("Board Name is required")
  return
    
-    }
+    }else {
+      setboarddNameError("")}
    if(name.trim() === ""){
-      setNameError(" Name are required")
+      setNameError(" Name is required")
    return
     
-      } 
+      }else{setNameError("")} 
     dispatch(
       addDetail({
         boardName,
